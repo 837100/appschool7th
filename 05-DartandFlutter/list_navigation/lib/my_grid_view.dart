@@ -10,6 +10,9 @@ class MyGridView extends StatelessWidget {
         title: const Text('GrideView'),
       ),
       body: Scrollbar(
+        thickness: 10,
+        thumbVisibility: true,
+        radius: const Radius.circular(5),
         child: GridView.builder(
           scrollDirection: Axis.vertical,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
