@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'my_grid_view.dart';
+import 'my_list_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyGridView(),
+      home: const MyListView(),
     );
   }
 }
