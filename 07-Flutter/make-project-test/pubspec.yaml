@@ -1,0 +1,21 @@
+name: sample_app
+description: A new Flutter project
+
+publish_to: 'none' # pub.dev에 배포하지 않겠다는 의미
+
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.6.2  # Flutter SDK 버전
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.2.1
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

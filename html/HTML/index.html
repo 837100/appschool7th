@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, inital-scale=1.0">
+    <title>HTML 기초 실습</title>
+
+</head>
+
+<body>
+    <header>
+        <h1>노성경의 프로필</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">소개</a></li>
+            <li><a href="#skills">기술</a></li>
+            <li><a href="#contatc">연락처</a></li> 
+        </ul>
+    </nav>
+
+    <main>
+        <section id="about">
+            <h2>소개</h2>
+            <p>안녕하세요, 앱 개발을 공부하고 있는 노성경입니다.</p>
+            <img src="profile.jpg" alt="노성경 프로필 사진" width="200">
+        </section>
+
+        <section id="skills">
+            <h2>기술</h2>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Java</li>
+                <li>C</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>연락처</h2>
+            <from>
+                <label for="email">이메일:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">메시지</label>
+                <textarea id="message" name="message" required></textarea>
+                <input type="submit" value="보내기">
+            </from>
+        </section>
+    </main>
+    <fotter>
+        <p>$copy; 2024 노성경. 모든 권리 보유.</p>
+    </fotter>
+</body>
+
+</html>
