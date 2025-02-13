@@ -1,10 +1,20 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart'; // Flutter의 Material 디자인 라이브러리를 가져옵니다.
-import 'package:flutter/foundation.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 void main() {
   runApp(const MyApp()); // Flutter 애플리케이션을 시작합니다. MyApp 위젯을 루트로 사용합니다.
+}
+
+class PlatformCheck extends StatelessWidget { 
+  const PlatformCheck({key? key}) : super(key: key);
+
+  bool get isWeb => kIsWeb;
+  bool get isMobileDevice => Platform.isAndroid || Platform.isIOS;
+  
 }
 
 class MyApp extends StatelessWidget {
