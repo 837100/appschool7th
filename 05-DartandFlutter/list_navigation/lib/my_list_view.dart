@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'my_details.dart';
 
 class ListDataItems {
   final List<String> monthItems = [
@@ -29,7 +29,7 @@ class MyListView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('ListView'),
       ),
-      body: ListView.builder(
+      body: ListView.separated(
         itemCount: item.monthItems.length,
         itemBuilder: (context, index) {
           return ListTile(
@@ -43,25 +43,15 @@ class MyListView extends StatelessWidget {
                             MyDetails(item.monthItems[index])));
               });
         },
-        itemExtent: 50,
-      ),
-    );
-  }
-}
-
-class MyDetails extends StatelessWidget {
-  final String month;
-  const MyDetails(this.month, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(month),
-      ),
-      body: Center(
-        child: Text('This is the details page for $month'),
+        separatorBuilder: (BuildContext context, int index) {
+          return const Divider(
+            color: Colors.grey,
+            thickness: 1,
+            height: 1,
+            indent: 16,
+            endIndent: 4,
+          );
+        },
       ),
     );
   }

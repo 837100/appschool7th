@@ -22,10 +22,20 @@ class MyGridView extends StatelessWidget {
           ),
           itemCount: 30,
           itemBuilder: (context, index) {
-            return Container(
-              color: Colors.blue[100 * (index % 9)],
-              child: Center(
-                child: Text('Item $index'),
+            return InkWell(
+              onTap: () {
+                debugPrint('Item $index Tapped');
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Item $index tapped'),
+                  ),
+                );
+              },
+              child: Container(
+                color: Colors.blue[100 * (index % 9)],
+                child: Center(
+                  child: Text('Item $index'),
+                ),
               ),
             );
           },
