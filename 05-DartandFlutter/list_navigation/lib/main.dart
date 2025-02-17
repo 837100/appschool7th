@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:list_navigation/drawer_demo.dart';
+import 'package:list_navigation/tab_demo.dart';
+// import 'package:list_navigation/navigator_demo.dart';
 // import 'package:list_navigation/my_grid_view.dart';
 // import 'my_list_view.dart';
 // import 'text_field_demo.dart';
-import 'package:list_navigation/shared_preference_demo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +25,10 @@ class MyApp extends StatelessWidget {
       // home: const MyListView(),
       // home: const MyGridView(),
       // home: const TextFieldDemo(),
-      home: SharedPreferenceDemo(),
+      // home: SharedPreferenceDemo(),
+      // home: NavigatorDemo(),
+      // home: DrawerDemo(),
+      home: TabDemo(),
     );
   }
 }
