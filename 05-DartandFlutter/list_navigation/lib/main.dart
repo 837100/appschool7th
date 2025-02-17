@@ -19,19 +19,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-          // primarySwatch: Colors.blue,
-          useMaterial3: true,
-          tabBarTheme: const TabBarTheme(
-            labelColor: Colors.amber,
-            indicatorColor: Colors.amber,
-            // labelStyle: TextStyle(color: Colors.amber),
-          )),
-      // home: const MyListView(),
-      // home: const MyGridView(),
-      // home: const TextFieldDemo(),
-      // home: SharedPreferenceDemo(),
-      // home: NavigatorDemo(),
-      // home: DrawerDemo(),
+        // primarySwatch: Colors.blue,
+        useMaterial3: true,
+      ),
       home: TabDemo(),
     );
   }
