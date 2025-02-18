@@ -53,7 +53,13 @@ class _MyWidgetState extends State<MyWidget> {
       body: StreamBuilder<String>(
         // streamController의 출수구라고 보면됨
         stream: _streamController.stream,
-        builder: (context, snapshot) {
+        builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+          debugPrint('StreamBuilder: ${snapshot.connectionState}');
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          } else if (!snapshot.hasData) {
+            return Center(child: Text('데이터가 없습니다.'));
+          }
           return Center(child: Text('StreamBuilder 예제: ${snapshot.data}'));
         },
       ),
