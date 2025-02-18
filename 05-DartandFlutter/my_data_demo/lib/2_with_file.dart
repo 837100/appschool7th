@@ -13,7 +13,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    futureDate = _loadMonths();
+    futureData = _loadMonths();
   }
 
   Future<List<String>> _loadMonths() async {
@@ -30,10 +30,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Scaffold(
-        appBar: AppBar(title: const Text('파일로 데이터 가져오기')),
-
-      )
-    )
+      home: Scaffold(appBar: AppBar(title: const Text('파일로 데이터 가져오기'))),
+    );
   }
 }
