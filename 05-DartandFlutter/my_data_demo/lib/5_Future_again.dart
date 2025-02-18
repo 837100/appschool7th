@@ -21,7 +21,7 @@ class MyWidget extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<MyWidget> {
-  String _data = '데이터를 불러오는 중입니다.';
+  String _data = '데이터 초기화.';
 
   @override
   void initState() {
@@ -42,6 +42,7 @@ class _MyWidgetState extends State<MyWidget> {
   Future<void> _loadData() async {
     debugPrint('_loadData');
     await Future.delayed(Duration(seconds: 2));
+    _data = '데이터를 불러오는 중....';
     setState(() {
       debugPrint('setState');
       _data = '데이터를 불러왔습니다.';
@@ -52,7 +53,7 @@ class _MyWidgetState extends State<MyWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Flutter 예제')),
-      body: Center(child: Text('비동기 함수 실습')),
+      body: Center(child: Text('비동기 함수 실습: $_data')),
     );
   }
 }
