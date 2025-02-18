@@ -9,12 +9,25 @@ void main() {
   runApp(const MyApp()); // Flutter 애플리케이션을 시작합니다. MyApp 위젯을 루트로 사용합니다.
 }
 
-class PlatformCheck extends StatelessWidget { 
-  const PlatformCheck({key? key}) : super(key: key);
+class PlatformCheck extends StatelessWidget {
+  const PlatformCheck({Key? key}) : super(key: key);
 
   bool get isWeb => kIsWeb;
   bool get isMobileDevice => Platform.isAndroid || Platform.isIOS;
-  
+  bool get isDesktop =>
+      Platform.isMacOS || Platform.isWindows || Platform.isLinux;
+  bool get isMobileDeviceOrWeb => isMobileDevice || isWeb;
+
+  @override
+  Widget build(BuildContext context) {
+    if (kIsWeb) {
+      return const Text('Running on the web!');
+    } else if (Platform.isAndroid) {
+      return const Text('Running on Android!');
+    } else if (Platform.isIOS) {
+      return const Text('Running on IOS!');
+    }
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -111,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Colors.blue,
             child: Center(
               child: Text(
-                'blue',
+                'Blue',
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
             ),
