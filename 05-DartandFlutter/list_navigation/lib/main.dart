@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:list_navigation/drawer_demo.dart';
+import 'package:list_navigation/navigator2_demo.dart';
 import 'package:list_navigation/tab_demo.dart';
 // import 'package:list_navigation/navigator_demo.dart';
 // import 'package:list_navigation/my_grid_view.dart';
@@ -17,12 +18,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // primarySwatch: Colors.blue,
-        useMaterial3: true,
-      ),
-      home: TabDemo(),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          // primarySwatch: Colors.blue,
+          useMaterial3: true,
+        ),
+        initialRoute: '/',
+        routes: <String, WidgetBuilder>{
+          '/': (BuildContext context) => const HomePage(),
+          '/signup': (BuildContext context) => const SignUpPage(),
+        });
   }
 }
