@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart'; // Flutter의 Material 디자인 라이브러리를 가져옵니다.
-import 'package:flutter/foundation.dart' show kIsWeb;
+// import 'package:flutter/foundation.dart' show kIsWeb;
 
 void main() {
   runApp(const MyApp()); // Flutter 애플리케이션을 시작합니다. MyApp 위젯을 루트로 사용합니다.
@@ -26,6 +26,8 @@ class PlatformCheck extends StatelessWidget {
       return const Text('Running on Android!');
     } else if (Platform.isIOS) {
       return const Text('Running on IOS!');
+    } else {
+      return const Text('Running on Fuchsia!');
     }
   }
 }
