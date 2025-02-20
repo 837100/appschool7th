@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -5,9 +6,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  if (kDebugMode) {
+    FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
+  }
   runApp(const MyApp());
-
-  FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
 }
 
 class MyApp extends StatelessWidget {
@@ -41,11 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
   final String _documentId = 'my_counter_id';
 
   void _incrementCounter() {
-    _firestore.runTransaction((transaction) async {
-      transaction.update(
-        _firestore.collection(_collectionName).doc(_documentId),
-        <String, dynamic>{'counter': FieldValue.increment(1)},
-      );
+    _firestore.collection(_collectionName).doc(_documentId).update({
+      'counter': FieldValue.increment(1),
     });
   }
 
