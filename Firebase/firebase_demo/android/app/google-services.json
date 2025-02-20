@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "450700197291",
+    "project_id": "sgfirebaseappscholl7th",
+    "storage_bucket": "sgfirebaseappscholl7th.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450700197291:android:6c9f42ea88695e471966ee",
+        "android_client_info": {
+          "package_name": "com.example.firebase_demo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwpytOBTcATBZ5J78DBLEfKc9p6FW6TZE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
