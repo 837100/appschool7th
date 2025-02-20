@@ -85,4 +85,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'sgfirebaseappscholl7th.firebasestorage.app',
     measurementId: 'G-ZG2F7N77FW',
   );
+
 }
