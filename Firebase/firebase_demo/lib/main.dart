@@ -6,6 +6,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
+
+  FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
 }
 
 class MyApp extends StatelessWidget {
