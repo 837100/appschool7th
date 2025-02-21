@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -36,8 +37,15 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
+            },
+          ),
+        ],
       ),
       body: Center(
         child: Column(
@@ -66,7 +74,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 }
                 final data = snapshot.data!.data() as Map<String, dynamic>;
                 final counter = data['counter'] as int;
-
                 return Text(
                   '$counter',
                   style: Theme.of(context).textTheme.headlineLarge,
