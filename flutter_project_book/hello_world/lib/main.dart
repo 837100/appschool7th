@@ -26,40 +26,58 @@ class MyApp extends StatelessWidget {
         ),
         body: Builder(
           builder:
-              (context) => Center(
-                child: Column(
-                  children: [
-                    Text(
-                      'Hello World Travle ',
-                      style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue[800],
-                      ),
+              // 가로 모드일때 스크롤이 가능하도록 SingleChildScrollView 위젯을 사용함.
+              (context) => SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Center(
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Text(
+                            'Hello World Travle ',
+                            style: TextStyle(
+                              fontSize: 26,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue[800],
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(5),
+                          child: Text(
+                            'Discover the World',
+                            style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.deepPurpleAccent,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(15),
+                          child: Image.network(
+                            'https://picsum.photos/200/300',
+                            height: 350,
+                            // errorBuilder: (
+                            //   BuildContext context,
+                            //   Object exception,
+                            //   StackTrace? stackTrace,
+                            // ) {
+                            //   return Text('이미지를 불러올 수 없습니다.');
+                            // },
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(15),
+                          child: ElevatedButton(
+                            child: Text('Contact Us'),
+                            onPressed: () => contactUs(context),
+                          ),
+                        ),
+                      ],
                     ),
-                    Text(
-                      'Discover the World',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.deepPurpleAccent,
-                      ),
-                    ),
-                    Image.network(
-                      'https://picsum.photos/200/300',
-                      height: 350,
-                      // errorBuilder: (
-                      //   BuildContext context,
-                      //   Object exception,
-                      //   StackTrace? stackTrace,
-                      // ) {
-                      //   return Text('이미지를 불러올 수 없습니다.');
-                      // },
-                    ),
-                    ElevatedButton(
-                      child: Text('Contact Us'),
-                      onPressed: () => contactUs(context),
-                    ),
-                  ],
+                  ),
                 ),
               ),
         ),
