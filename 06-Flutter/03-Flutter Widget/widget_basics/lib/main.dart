@@ -66,6 +66,11 @@ class _MyAppState extends State<MyApp> {
                   setState(() {
                     message = '버튼을 눌렀습니다.';
                   });
+                  Future.delayed(Duration(seconds: 2), () {
+                    setState(() {
+                      message = '버튼을 눌러주세요!';
+                    });
+                  });
                 },
                 child: Text('Elevated Button'),
               ),
