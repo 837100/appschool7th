@@ -135,3 +135,8 @@ Temporary Items
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/firebase,macos,visualstudiocode
+
+
+# 애뮬레이터 백업 경로
+# 애뮬레이터 백업을 하는 명령어: firebase emulators:start -- import {폴더이름} --export-on-exit
+emulator-backup/
