@@ -10,12 +10,12 @@ class ListScreen extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: const Text('ListView 예제')),
-        body: ListView.builder(
+        body: ListView.separated(
           itemCount: items.length,
           itemBuilder: (context, index) {
             return ListTile(title: Text(items[index]));
           },
-          // separatorBuilder: (context, index) => Divider(),
+          separatorBuilder: (context, index) => Divider(),
         ),
       ),
     );
