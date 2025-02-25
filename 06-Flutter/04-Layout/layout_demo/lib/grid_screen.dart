@@ -4,13 +4,19 @@ class GridScreen extends StatelessWidget {
   GridScreen({super.key});
 
   final List<String> items = List.generate(100, (index) => 'Item ${index + 1}');
+  // statefulwidget일 경우에서는 소멸자 구현해주어야 함.
+  final ScrollController _scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: const Text('GridView 예제')),
         body: Scrollbar(
+          controller: _scrollController,
           child: GridView.builder(
+            scrollDirection: Axis.horizontal,
+            controller: _scrollController,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
               crossAxisSpacing: 10,
