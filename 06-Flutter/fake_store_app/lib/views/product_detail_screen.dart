@@ -38,20 +38,23 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               children: [
                 Expanded(child: _buildProductDetail(snapshot.data as Product)),
 
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                    ),
-                    onPressed: () {},
-                    child: const Text(
-                      '장바구니에 담기',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                      ),
+                      onPressed: () {},
+                      child: const Text(
+                        '장바구니에 담기',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
