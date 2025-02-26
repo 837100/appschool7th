@@ -1,5 +1,5 @@
 class Product {
-  final String id;
+  final int id;
   final String title;
   final double price; // 19.99 처럼 서양에서는 소숫점을 자주 쓰므로 double type을 사용했음
   final String description;
