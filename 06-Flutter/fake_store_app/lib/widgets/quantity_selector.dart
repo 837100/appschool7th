@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class QuantitySclector extends StatefulWidget {
+class QuantitySelector extends StatefulWidget {
   final Function(int) onQuantityChange;
 
-  const QuantitySclector({super.key, required this.onQuantityChange});
+  const QuantitySelector({super.key, required this.onQuantityChange});
 
   @override
-  State<QuantitySclector> createState() => _QuantitySclectorState();
+  State<QuantitySelector> createState() => _QuantitySclectorState();
 }
 
-class _QuantitySclectorState extends State<QuantitySclector> {
+class _QuantitySclectorState extends State<QuantitySelector> {
   int _quantity = 1;
 
   @override

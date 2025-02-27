@@ -1,7 +1,11 @@
-import 'package:fake_store_app/models/product.dart';
-import 'package:fake_store_app/services/api_service.dart';
-import 'package:fake_store_app/widgets/quantity_sclector.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../models/product.dart';
+import '../providers/cart_provider.dart';
+import '../services/api_service.dart';
+import '../widgets/quantity_selector.dart';
+import '../widgets/shopping_cart.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final int productId;
@@ -24,7 +28,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('상품 상세')),
+      appBar: AppBar(title: const Text('상품 상세'), actions: [ShoppingCart()]),
       body: SafeArea(
         child: FutureBuilder(
           future: product,
@@ -50,8 +54,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         padding: const EdgeInsets.symmetric(vertical: 16),
                       ),
                       onPressed: () {
-                        print(
-                          '장바구니에 담기: ${snapshot.data!.id} / title: ${snapshot.data!.title}, $quantity',
+                        // print(
+                        //   '장바구니에 담기: ${snapshot.data!.id} / title: ${snapshot.data!.title}, $quantity',
+                        // );
+                        final cartProvider = context.read<CartProvider>();
+                        cartProvider.addToCart(
+                          snapshot.data as Product,
+                          quantity: quantity,
                         );
                       },
                       child: const Text(
@@ -110,7 +119,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             ),
             const SizedBox(height: 24),
 
-            QuantitySclector(
+            QuantitySelector(
               onQuantityChange: (quantity) {
                 setState(() {
                   this.quantity = quantity;

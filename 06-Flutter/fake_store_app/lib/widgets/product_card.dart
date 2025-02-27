@@ -1,4 +1,4 @@
-import 'package:fake_store_app/views/product_detail_screen.dart';
+import 'package:fake_store_app/screens/product_detail_screen.dart';
 import 'package:flutter/material.dart';
 import '../models/product.dart';
 
