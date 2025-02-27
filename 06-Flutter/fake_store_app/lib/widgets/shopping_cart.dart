@@ -2,6 +2,8 @@ import 'package:fake_store_app/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../screens/cart_screen.dart';
+
 class ShoppingCart extends StatelessWidget {
   const ShoppingCart({super.key});
 
@@ -12,7 +14,14 @@ class ShoppingCart extends StatelessWidget {
         return Stack(
           alignment: Alignment.center,
           children: [
-            IconButton(icon: const Icon(Icons.shopping_cart), onPressed: () {}),
+            IconButton(
+              icon: const Icon(Icons.shopping_cart),
+              onPressed: () {
+                Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (context) => CartScreen()));
+              },
+            ),
             if (cartProvider.itemCount > 0)
               Positioned(
                 top: 5,
