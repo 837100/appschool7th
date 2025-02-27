@@ -1,15 +1,51 @@
 import 'package:flutter/material.dart';
 
 class QuantitySclector extends StatefulWidget {
-  const QuantitySclector({super.key});
+  final Function(int) onQuantityChange;
+
+  const QuantitySclector({super.key, required this.onQuantityChange});
 
   @override
   State<QuantitySclector> createState() => _QuantitySclectorState();
 }
 
 class _QuantitySclectorState extends State<QuantitySclector> {
+  int _quantity = 1;
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox(height: 30, child: const Placeholder());
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        IconButton(
+          icon: const Icon(Icons.remove, size: 48),
+          onPressed: () {
+            setState(() {
+              if (_quantity > 1) {
+                _quantity--;
+                widget.onQuantityChange(_quantity);
+              }
+            });
+          },
+        ),
+        const SizedBox(width: 8),
+        SizedBox(
+          width: 60,
+          child: Center(
+            child: Text('$_quantity', style: const TextStyle(fontSize: 30)),
+          ),
+        ),
+        const SizedBox(width: 8),
+        IconButton(
+          icon: const Icon(Icons.add, size: 48),
+          onPressed: () {
+            setState(() {
+              if (_quantity < 999) _quantity++;
+              widget.onQuantityChange(_quantity);
+            });
+          },
+        ),
+      ],
+    );
   }
 }
