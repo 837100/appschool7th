@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
 
+import 'providers/order_provider.dart';
 import 'providers/cart_provider.dart';
 import 'screens/product_list_screen.dart';
 
@@ -19,7 +20,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (context) => CartProvider())],
+      providers: [
+        ChangeNotifierProvider(create: (context) => CartProvider()),
+        ChangeNotifierProvider(create: (context) => OrderProvider()),
+      ],
+
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
