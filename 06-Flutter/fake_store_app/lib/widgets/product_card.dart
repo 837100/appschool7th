@@ -1,5 +1,6 @@
-import 'package:fake_store_app/screens/product_detail_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../screens/product_detail_screen.dart';
 import '../models/product.dart';
 
 class ProductCard extends StatelessWidget {

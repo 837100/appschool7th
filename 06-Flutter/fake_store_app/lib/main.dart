@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
 
 import 'providers/cart_provider.dart';
 import 'screens/product_list_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  Stripe.publishableKey =
+      'pk_test_51QxOBt04GyWec2wjOK0qxf52MV1vPyAhoa99sWD6rSAivB3rLSAHp00yNK9u5MkRwSIFMcOjiQGkn4PABxV0kNy600SOQkrN0O';
   runApp(const MyApp());
 }
 
