@@ -3,7 +3,9 @@ import 'package:provider/provider.dart';
 
 import '../models/cart_item.dart';
 import '../providers/cart_provider.dart';
+import '../providers/order_provider.dart';
 import '../services/payment_service.dart';
+import 'order_confirmation_screen.dart';
 
 class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key});
@@ -99,5 +101,42 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       items: items,
     );
     print('결제 결과: $result');
+    if (result['success']) {
+      // 결제 성공
+      final orderId = result['orderId'];
+      final amount = result['amount'];
+      final date = result['date'];
+
+      final orderProvider = Provider.of<OrderProvider>(context, listen: false);
+      orderProvider.addOrder(
+        orderId: orderId,
+        items: items,
+        totalAmount: amount,
+        shippingAddress: {
+          'address1': '서울시 강남구',
+          'city': '서울',
+          'postal_code': '12345',
+          'country': 'KR',
+        },
+        paymentMethod: '신용카드',
+      );
+
+      // 결제 완료 후 장바구니 비우기
+      final cartProvider = Provider.of<CartProvider>(context, listen: false);
+      cartProvider.clearCart();
+
+      // 결제 완료 화면으로 이동
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (_) => OrderConfirmationScreen(orderId: orderId),
+        ),
+      );
+    } else {
+      // 결제 실패
+      final error = result['error'];
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('결제 실패: $error'), backgroundColor: Colors.red),
+      );
+    }
   }
 }
