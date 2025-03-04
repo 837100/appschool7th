@@ -5,7 +5,8 @@ import '../models/product.dart';
 
 class ApiService {
   final String _baseUrl = 'https://fakestoreapi.com';
-  final String _simpleServerUrl = 'http://localhost:3000';
+  final String _simpleServerUrl = 'http://localhost:3001';
+  final String _androidServerUrl = 'http://10.0.0.2:3001';
 
   Future<List<Product>> getProducts() async {
     final response = await http.get(Uri.parse('$_baseUrl/products'));

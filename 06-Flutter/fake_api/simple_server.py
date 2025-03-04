@@ -83,4 +83,4 @@ def webhook():
 
 if __name__ == '__main__':
     # 포트 5000에서 실행 (ngrok이 이 포트를 외부에 노출)
-    app.run(port=3000, host='0.0.0.0', debug=True)
+    app.run(port=3001, host='0.0.0.0', debug=True)
