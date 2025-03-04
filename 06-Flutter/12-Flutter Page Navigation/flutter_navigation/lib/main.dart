@@ -28,15 +28,11 @@ class MyApp extends StatelessWidget {
     const title = 'Flutter code Sample for Navigator';
     return MaterialApp(
       title: title,
-      home: Scaffold(
-        appBar: AppBar(title: const Text(title)),
-        body: ListView.builder(
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-            return MyListView(title: items[index]);
-          },
-        ),
-      ),
+      initialRoute: '/signup',
+      routes: <String, WidgetBuilder>{
+        '/': (BuildContext context) => const HomePage(),
+        '/signup': (BuildContext context) => const SignUpPage(),
+      },
     );
   }
 }
