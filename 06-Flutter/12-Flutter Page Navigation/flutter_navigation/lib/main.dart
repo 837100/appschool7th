@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'my_list_view.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    const title = 'MyAwesomeApp';
+    const title = 'Flutter code Sample for Navigator';
     return MaterialApp(
       title: title,
       home: Scaffold(
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
         body: ListView.builder(
           itemCount: items.length,
           itemBuilder: (context, index) {
-            return MyListView(items[index]);
+            return MyListView(title: items[index]);
           },
         ),
       ),
