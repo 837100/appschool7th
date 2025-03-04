@@ -5,7 +5,8 @@
         android:label="fake_store_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
-         android:usesCleartextTraffic="true">
+        cleartextTrafficPermitted="true"
+        android:networkSecurityConfig="@xml/network_security_config">
 
         <meta-data
             android:name="com.google.android.gms.wallet.api.enabled"
