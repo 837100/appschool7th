@@ -16,28 +16,28 @@ class MyHomePage extends StatelessWidget {
             bottom: const TabBar(
               tabs: [
                 Tab(
-                  icon: Icon(Icons.home, color: Colors.white),
+                  icon: Icon(Icons.home, color: Colors.lightBlue),
                   child: Text(
                     'Home',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
                 Tab(
-                  icon: Icon(Icons.account_balance, color: Colors.white),
+                  icon: Icon(Icons.account_balance, color: Colors.lightBlue),
                   child: Text(
                     'Account',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
                 Tab(
-                  icon: Icon(Icons.calculate, color: Colors.white),
+                  icon: Icon(Icons.calculate, color: Colors.lightBlue),
                   child: Text(
                     'Payments',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
                 Tab(
-                  icon: Icon(Icons.credit_score, color: Colors.white),
+                  icon: Icon(Icons.credit_score, color: Colors.lightBlue),
                   child: Text(
                     'Card',
                     style: TextStyle(fontWeight: FontWeight.bold),
