@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'my_home_page.dart';
 import 'my_list_view.dart';
 
 void main() {
@@ -30,8 +31,8 @@ class MyApp extends StatelessWidget {
       title: title,
       initialRoute: '/signup',
       routes: <String, WidgetBuilder>{
-        '/': (BuildContext context) => const HomePage(),
-        '/signup': (BuildContext context) => const SignUpPage(),
+        '/': (BuildContext context) => const MyHomePage(title: title),
+        // '/signup': (BuildContext context) => const SignUpPage(),
       },
     );
   }
