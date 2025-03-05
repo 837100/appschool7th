@@ -30,7 +30,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   static const platform = MethodChannel(
-    'ko.co.sg.platform_channel_demo/battery',
+    'kr.co.sg.platform_channel_demo/battery',
   );
   String _batteryLevel = 'Unknown battery level.';
 
@@ -54,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(title: Text('Platform Channel Example')),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(_batteryLevel),
             ElevatedButton(
