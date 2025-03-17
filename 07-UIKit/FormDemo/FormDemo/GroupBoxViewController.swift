@@ -9,11 +9,15 @@ import UIKit
 
 class GroupBoxViewController: UIViewController {
     
+    var groupBoxConstraint: NSLayoutConstraint!
+    
     var flag = false
     let groupBox = UIView()
     let groupBoxLabel = UILabel()
     let toggle = UISwitch()
     let textField = UITextField()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +25,16 @@ class GroupBoxViewController: UIViewController {
         view.backgroundColor = .white
         
         setupGroupBox()
+        
+        // 키보드 알림 등록
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // 키보드 알림 해제
+        NotificationCenter.default.removeObserver(self)
     }
     
     func setupGroupBox() {
@@ -41,15 +55,19 @@ class GroupBoxViewController: UIViewController {
         
         textField.borderStyle = .roundedRect
         textField.placeholder = "텍스트 필드"
+//          이벤트 처리방식 변경 실습으로 주석 처리
         textField.delegate = self
         textField.translatesAutoresizingMaskIntoConstraints = false
         groupBox.addSubview(textField)
+        
+        groupBoxConstraint = groupBox.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 100)
         
         textField.borderStyle = .roundedRect
         
         
         NSLayoutConstraint.activate([
-            groupBox.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            groupBoxConstraint,
+//            groupBox.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             groupBox.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             groupBox.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             groupBox.heightAnchor.constraint(equalToConstant: 200),
@@ -67,6 +85,9 @@ class GroupBoxViewController: UIViewController {
         ])
     }
     
+    func moveGroupBox(forEditing: Bool) {
+        groupBoxConstraint.constant = forEditing ? -100 : 100
+    }
     
     // 이렇게 파라미터 2개도 사용 가능함.
     @objc func toggleChanged(sender: UISwitch, event: UIEvent) {
@@ -75,7 +96,16 @@ class GroupBoxViewController: UIViewController {
         print("flag: \(flag)")
         // 텍스트 필드 편집 종료
         textField.resignFirstResponder()
-        
+    }
+    
+    @objc func keyBoardWillShow(_ notification: Notification) {
+        print("키보드 표시")
+        moveGroupBox(forEditing: true)
+    }
+    
+    @objc func keyBoardWillHide(_ notification: Notification) {
+        print("키보드 숨김")
+        moveGroupBox(forEditing: false)
     }
 }
 
@@ -88,6 +118,7 @@ extension GroupBoxViewController: UITextFieldDelegate {
     // 텍스트 필드 편집 시작
     func textFieldDidBeginEditing(_ textField: UITextField) {
         print("textFieldDidBegining Editing")
+        moveGroupBox(forEditing: true)
     }
     
     // 텍스트 필드 문자 입력
@@ -110,6 +141,7 @@ extension GroupBoxViewController: UITextFieldDelegate {
     // 필드 편집 종료
     func textFieldDidEndEditing(_ textField: UITextField) {
         print("편집 종료")
+        moveGroupBox(forEditing: false)
     }
     
     
