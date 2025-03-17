@@ -16,6 +16,7 @@ class GroupBoxViewController: UIViewController {
     let groupBoxLabel = UILabel()
     let toggle = UISwitch()
     let textField = UITextField()
+    let textField2 = UITextField()
     
     
     
@@ -25,16 +26,17 @@ class GroupBoxViewController: UIViewController {
         view.backgroundColor = .white
         
         setupGroupBox()
+        setupTextField2()
         
         // 키보드 알림 등록
-        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // 키보드 알림 해제
-        NotificationCenter.default.removeObserver(self)
+//        NotificationCenter.default.removeObserver(self)
     }
     
     func setupGroupBox() {
@@ -84,6 +86,19 @@ class GroupBoxViewController: UIViewController {
             textField.bottomAnchor.constraint(equalTo: groupBox.bottomAnchor, constant: -10)
         ])
     }
+    func setupTextField2() {
+        textField2.borderStyle = .roundedRect
+        textField2.placeholder = "텍스트 필드 2"
+        textField2.delegate = self
+        textField2.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(textField2)
+        
+        NSLayoutConstraint.activate([
+            textField2.topAnchor.constraint(equalTo: groupBox.bottomAnchor, constant: 20),
+            textField2.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            textField2.trailingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
+        ])
+    }
     
     func moveGroupBox(forEditing: Bool) {
         groupBoxConstraint.constant = forEditing ? -100 : 100
@@ -117,6 +132,11 @@ extension GroupBoxViewController: UITextFieldDelegate {
     
     // 텍스트 필드 편집 시작
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == textField2 {
+            print("텍스트 필드 2 편집 시작")
+        } else if self.textField == textField {
+            print("텍스트 필드 편집 시작")
+        }
         print("textFieldDidBegining Editing")
         moveGroupBox(forEditing: true)
     }
@@ -140,11 +160,13 @@ extension GroupBoxViewController: UITextFieldDelegate {
     
     // 필드 편집 종료
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print("편집 종료")
+        if textField == textField2 {
+            print("텍스트 필드 2 편집 종료")
+        } else if self.textField == textField {
+            print("텍스트 필드 1 편집 종료")
+        }
         moveGroupBox(forEditing: false)
     }
-    
-    
 }
 
 #Preview {
