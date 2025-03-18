@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+    let RECTANGLE_VIEW_TAG = 1000
     
     var imageView: UIImageView!
     
@@ -46,7 +46,12 @@ class ViewController: UIViewController {
         //        tapGesture.numberOfTapsRequired = 2 // 더블 탭
         //        tapGesture.numberOfTouchesRequired = 1 // 한 손가락
         //        view.addGestureRecognizer(tapGesture)
+        print("subviews count: \(view.subviews.count)")
+        guard let rectangle = view.subviews.first(where: { $0.tag == RECTANGLE_VIEW_TAG}) else {
+            return
+        }
         
+    
         // 여러 제스처 인식기 생성
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture))
         let rotationGesture = UIRotationGestureRecognizer(target: self, action: #selector(handleRotationGesture))
