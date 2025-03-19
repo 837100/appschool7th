@@ -39,6 +39,7 @@ class SecondViewController: UIViewController {
         ])
         
         // NotificationCenter를 사용하여 데이터 변경 감지
+        // 데이터가 등록되기 전까지는 데이터 감지 불가능
         observer = NotificationCenter.default.addObserver(
             forName: DataManager.dataChangedNotification,
             object: nil,
