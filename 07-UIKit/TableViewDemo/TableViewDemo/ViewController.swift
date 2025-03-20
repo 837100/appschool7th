@@ -28,16 +28,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             Animal(name: "곰", image: UIImage(systemName: "circle")!)
         ]),
         AnimalCategory(category: "조류", animals: [
-            Animal(name: "독수리", image: UIImage(systemName: "circle")!),
-            Animal(name: "부엉이", image: UIImage(systemName: "circle")!),
-            Animal(name: "참새", image: UIImage(systemName: "circle")!)
+            Animal(name: "독수리", image: UIImage(systemName: "circle.fill")!),
+            Animal(name: "부엉이", image: UIImage(systemName: "circle.fill")!),
+            Animal(name: "참새", image: UIImage(systemName: "circle.fill")!)
         ]),
     ]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "오늘 할 일"
         
         let tableView = UITableView(frame: view.bounds, style: .insetGrouped)
         
@@ -45,6 +44,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.dataSource = self
         tableView.delegate = self
         
+        // 커스텀 셀을 등록
+        tableView.register(CustomCell.self, forCellReuseIdentifier: "CustomCell")
         view.addSubview(tableView)
     }
     
@@ -53,19 +54,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // 섹션의 개수를 반환하는 메서드
     func numberOfSections(in tableView: UITableView) -> Int {
         return categories.count
+        
     }
     
+    // 섹션에 포함된 행의 개수를 반환하는 메서드
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories[section].animals.count
     }
     
+    // 셀을 생성하고 구성하는 메서드
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
-        }
-        cell?.textLabel?.text = categories[indexPath.section].animals[indexPath.row].name
-        return cell!
+        // 셀을 재사용 큐에서 가져옴
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomCell", for: indexPath) as! CustomCell
+        
+        
+        let animal = categories[indexPath.section].animals[indexPath.row]
+        
+        cell.configure(image: animal.image, name: animal.name)
+        
+        return cell
         
     }
     // MARK: - UITableViewDeleagte
@@ -76,10 +83,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // 행의 높이를 반환
     func tableView(_tableView: UITableView, heightForRowAt indexPath: IndexPath ) -> CGFloat {
-        if indexPath.row % 2 == 0 {
-            return 100
-        }
-        return 60
+//        if indexPath.row % 2 == 0 {
+//            return 100
+//        }
+        return 70
     }
     
 //    // 행이 그려지기 직전에 호출

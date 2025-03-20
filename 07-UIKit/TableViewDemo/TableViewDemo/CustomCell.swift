@@ -28,8 +28,22 @@ class CustomCell: UITableViewCell {
         // Auto LAyout 제약 조건을 설정합니다.
         NSLayoutConstraint.activate([
             // animalImageView의 제약 조건
+            animalImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            animalImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            animalImageView.widthAnchor.constraint(equalToConstant: 50),
+            animalImageView.heightAnchor.constraint(equalToConstant: 50),
             
+            // nameLabel의 제약 조건
+            nameLabel.leadingAnchor.constraint(equalTo: animalImageView.trailingAnchor, constant: 16),
+            nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
-
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemnted")
+    }
+    
+    func configure(image: UIImage, name: String) {
+        animalImageView.image = image
+        nameLabel.text = name
+    }
 }
