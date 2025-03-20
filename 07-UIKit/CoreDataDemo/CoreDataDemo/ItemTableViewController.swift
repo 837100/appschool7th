@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 class ItemTableViewController: UITableViewController {
-
+    
     // MARK: - Properties
     private var items: [GridItem] = []
     
@@ -34,9 +34,9 @@ class ItemTableViewController: UITableViewController {
         // 데이터 로드
         loadGridItems()
     }
-
+    
     func configureNavigation() {
-    title = "Core Data 테이블"
+        title = "Core Data 테이블"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
@@ -87,16 +87,37 @@ class ItemTableViewController: UITableViewController {
         }
     }
     
+    // 데이터 삭제
+    private func deleteGridItem(_ item: GridItem) {
+        let request: NSFetchRequest<GridItemEntity> = GridItemEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "id = %@", item.id as CVarArg)
+        
+        do {
+            let result = try viewContext.fetch(request)
+            guard let object = result.first else { return }
+            
+            viewContext.delete(object)
+            try viewContext.save()
+            
+            // 삭제 후 UI 업데이트
+            loadGridItems()
+        } catch {
+            print("삭제 실패: \(error)")
+        }
+    }
+    
+    // MARK: - Table view data source
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return items.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -108,9 +129,59 @@ class ItemTableViewController: UITableViewController {
         content.image = UIImage(systemName: item.imageSystemName)
         content.imageProperties.maximumSize = CGSize(width: 30, height: 30)
         content.imageProperties.tintColor = .systemBlue
-
+        
         cell.contentConfiguration = content
-
+        
         return cell
     }
+    
+    // MARK: - 테이블 뷰 델리게이트 메서드
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let item = items[indexPath.row]
+        
+        // 확인 알림 표시
+        let alert = UIAlertController(
+            title: "아이템 삭제",
+            message: "\(item.title)을(를) 삭제하시겠습니까?",
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
+        alert.addAction(UIAlertAction(title: "삭제", style: .destructive) { [weak self] _ in
+            self?.deleteGridItem(item)
+        })
+        
+        present(alert, animated: true)
+    }
+            
+    // 스와이프 삭제 기능 구현
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let item = items[indexPath.row]
+            deleteGridItem(item)
+        }
+    }
+}
+
+// 검색 기능 구현
+extension ItemTableViewController: UISearchResultsUpdating {
+    
+    // 검색 컨트롤러 설정
+    func configureSearchController() {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        
+    }
+    
+    // 검색 기능 구현
+    
+    func updateSearchResults(for searchController: UISearchController) {
+            
+    }
+    
+    
+    
+    
 }
