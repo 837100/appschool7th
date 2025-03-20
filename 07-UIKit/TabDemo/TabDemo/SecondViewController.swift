@@ -20,7 +20,9 @@ class SecondViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Second"
         navigationItem.title = "Second"
+  
         
         setupLabel()
     }
