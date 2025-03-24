@@ -212,3 +212,10 @@ extension ItemTableViewController: UISearchResultsUpdating {
         searchGridItems(text)
     }
 }
+
+
+#Preview {
+    UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
+}
+
+
