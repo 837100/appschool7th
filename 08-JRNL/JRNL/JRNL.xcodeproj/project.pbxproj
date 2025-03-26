@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		D2AB35E82D923B6A00D4BCC9 /* JRNL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JRNL.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2AB35E82D923B6A00D4BCC9 /* JRNL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = JRNL.app; path = "/Users/sg/appschool7th/08-JRNL/JRNL/build/Debug-iphoneos/JRNL.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -45,17 +45,8 @@
 		D2AB35DF2D923B6A00D4BCC9 = {
 			isa = PBXGroup;
 			children = (
-				D2AB35E92D923B6A00D4BCC9 /* Products */,
 				D27BF50F2D93B50300185DE8 /* JRNL */,
 			);
-			sourceTree = "<group>";
-		};
-		D2AB35E92D923B6A00D4BCC9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D2AB35E82D923B6A00D4BCC9 /* JRNL.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,7 +99,7 @@
 			mainGroup = D2AB35DF2D923B6A00D4BCC9;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = D2AB35E92D923B6A00D4BCC9 /* Products */;
+			productRefGroup = D2AB35DF2D923B6A00D4BCC9;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
