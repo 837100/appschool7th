@@ -367,6 +367,10 @@
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QeI-ub-Spb">
                                                 <rect key="frame" x="0.0" y="0.0" width="51" height="20.333333333333332"/>
+                                                <connections>
+                                                    <action selector="getLocationSwitchValueChanged:" destination="Hte-Om-DlU" eventType="valueChanged" id="Mkh-ae-En3"/>
+                                                    <action selector="locationSwitchValueChanged:" destination="Hte-Om-DlU" eventType="valueChanged" id="u2o-ue-dzR"/>
+                                                </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ueR-SY-Bmj">
                                                 <rect key="frame" x="57" y="0.0" width="97" height="20.333333333333332"/>
@@ -431,12 +435,15 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="YbX-0C-DIe">
                             <connections>
-                                <segue destination="usy-B7-NH9" kind="unwind" unwindAction="unwindNewEntrySaveWithSegue:" id="Let-Mh-xwK"/>
+                                <segue destination="usy-B7-NH9" kind="unwind" unwindAction="unwindNewEntrySaveWithSegue:" id="vZg-A3-zqo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bodyTextView" destination="cc2-4h-ZEr" id="ovW-yb-r7Y"/>
+                        <outlet property="getLocationSwitch" destination="QeI-ub-Spb" id="DXM-q0-XS9"/>
+                        <outlet property="getLocationSwitchLabel" destination="ueR-SY-Bmj" id="K6l-80-oif"/>
+                        <outlet property="getLocationSwitchValueChanged" destination="OMs-ns-azl" id="bE1-Al-JIg"/>
                         <outlet property="photoImageView" destination="OMk-EO-GRi" id="Zfa-bs-aKM"/>
                         <outlet property="saveButton" destination="YbX-0C-DIe" id="fDA-Mu-bzL"/>
                         <outlet property="titleTextField" destination="apL-gw-5Wo" id="xHb-2n-EKi"/>

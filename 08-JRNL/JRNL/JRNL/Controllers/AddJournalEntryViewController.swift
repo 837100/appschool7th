@@ -10,6 +10,10 @@ import CoreLocation
 
 class AddJournalEntryViewController: UIViewController {
 
+    
+    @IBOutlet weak var getLocationSwitch: UISwitch!
+    
+    @IBOutlet weak var getLocationSwitchLabel: UILabel!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var bodyTextView: UITextView!
@@ -29,6 +33,16 @@ class AddJournalEntryViewController: UIViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
     }
+    
+    @IBAction func getLocationSwitchValueChanged(_ sender: Any) {
+        if getLocationSwitch.isOn {
+             getLocationSwitchLabel.text = "Getting location..."
+             locationManager.requestLocation()
+           } else {
+             getLocationSwitchLabel.text = "Get Location"
+           }
+         }
+
     
     // MARK: - Navigation
 

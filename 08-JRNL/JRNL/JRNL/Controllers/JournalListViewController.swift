@@ -61,7 +61,7 @@ extension JournalListViewController: UITableViewDelegate {
         if editingStyle == .delete {
             sampleJournalEntryData.journalEntries.remove(at: indexPath.row)
             // 테이블 전체 새로고침
-            // tableView.reloadData()
+//             tableView.reloadData()
             
             // 테이블에서 해당 행만 삭제 (애니메이션 효과 포함)
             tableView.deleteRows(at: [indexPath], with: .fade)
