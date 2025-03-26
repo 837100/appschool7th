@@ -11,7 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		D2AB35FA2D923B6A00D4BCC9 /* Exceptions for "JRNL" folder in "JRNL" target */ = {
+		D27BF5192D93B50300185DE8 /* Exceptions for "JRNL" folder in "JRNL" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -21,10 +21,10 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		D2AB35EA2D923B6A00D4BCC9 /* JRNL */ = {
+		D27BF50F2D93B50300185DE8 /* JRNL */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				D2AB35FA2D923B6A00D4BCC9 /* Exceptions for "JRNL" folder in "JRNL" target */,
+				D27BF5192D93B50300185DE8 /* Exceptions for "JRNL" folder in "JRNL" target */,
 			);
 			path = JRNL;
 			sourceTree = "<group>";
@@ -45,8 +45,8 @@
 		D2AB35DF2D923B6A00D4BCC9 = {
 			isa = PBXGroup;
 			children = (
-				D2AB35EA2D923B6A00D4BCC9 /* JRNL */,
 				D2AB35E92D923B6A00D4BCC9 /* Products */,
+				D27BF50F2D93B50300185DE8 /* JRNL */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,7 +74,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				D2AB35EA2D923B6A00D4BCC9 /* JRNL */,
+				D27BF50F2D93B50300185DE8 /* JRNL */,
 			);
 			name = JRNL;
 			packageProductDependencies = (

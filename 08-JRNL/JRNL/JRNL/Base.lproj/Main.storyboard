@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="journalCell" id="bPy-4M-fzd">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="journalCell" id="bPy-4M-fzd" customClass="JournalListTableViewCell" customModule="JRNL" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bPy-4M-fzd" id="AeG-gz-pt4">
@@ -60,6 +60,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="dateLabel" destination="ihT-6v-dn8" id="xpO-X7-Il2"/>
+                                            <outlet property="photoImageView" destination="Ebu-YM-FQG" id="8NT-zy-hTb"/>
+                                            <outlet property="titleLabel" destination="J4e-uA-pXs" id="Ck1-jf-xMX"/>
                                             <segue destination="Jeh-6M-lg4" kind="show" id="oho-iS-Cpd"/>
                                         </connections>
                                     </tableViewCell>
@@ -249,7 +252,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="316"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Gbi-sv-LgS">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="map" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Gbi-sv-LgS">
                                                     <rect key="frame" x="57" y="9" width="300" height="298.33333333333331"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="300" id="ZjA-BS-Doe"/>
@@ -347,7 +350,7 @@
         <!--New Entry-->
         <scene sceneID="qii-nc-jQy">
             <objects>
-                <viewController id="Hte-Om-DlU" sceneMemberID="viewController">
+                <viewController id="Hte-Om-DlU" customClass="AddJournalEntryViewController" customModule="JRNL" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QuR-9D-Pkq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -377,6 +380,9 @@
                                         <rect key="frame" x="8" y="77" width="358" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Hte-Om-DlU" id="7sV-Bd-aZJ"/>
+                                        </connections>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cc2-4h-ZEr">
                                         <rect key="frame" x="8" y="119" width="358" height="128"/>
@@ -388,9 +394,12 @@
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Hte-Om-DlU" id="iyk-VY-uSS"/>
+                                        </connections>
                                     </textView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="face.smiling" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="OMk-EO-GRi">
-                                        <rect key="frame" x="87" y="255.66666666666669" width="200" height="198.66666666666669"/>
+                                        <rect key="frame" x="87" y="255.66666666666666" width="200" height="198.66666666666671"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="FCC-cj-r6l"/>
                                             <constraint firstAttribute="height" constant="200" id="GRt-2r-Ym0"/>
@@ -417,11 +426,21 @@
                     <navigationItem key="navigationItem" title="New Entry" id="Ndf-kh-vJc">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="j7Y-B8-Nj1">
                             <connections>
-                                <segue destination="usy-B7-NH9" kind="unwind" unwindAction="unwindNewEntryCancelWithSegue:" id="tHa-rn-Bmw"/>
+                                <segue destination="usy-B7-NH9" kind="unwind" unwindAction="unwindNewEntryCancelWithSegue:" id="mlW-Sl-GxI"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="YbX-0C-DIe"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="YbX-0C-DIe">
+                            <connections>
+                                <segue destination="usy-B7-NH9" kind="unwind" unwindAction="unwindNewEntrySaveWithSegue:" id="Let-Mh-xwK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bodyTextView" destination="cc2-4h-ZEr" id="ovW-yb-r7Y"/>
+                        <outlet property="photoImageView" destination="OMk-EO-GRi" id="Zfa-bs-aKM"/>
+                        <outlet property="saveButton" destination="YbX-0C-DIe" id="fDA-Mu-bzL"/>
+                        <outlet property="titleTextField" destination="apL-gw-5Wo" id="xHb-2n-EKi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nyg-oz-i0V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="usy-B7-NH9" userLabel="Exit" sceneMemberID="exit"/>
