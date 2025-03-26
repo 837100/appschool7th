@@ -7,24 +7,24 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		D2AB35E82D923B6A00D4BCC9 /* JRNL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = JRNL.app; path = "/Users/sg/appschool7th/08-JRNL/JRNL/build/Debug-iphoneos/JRNL.app"; sourceTree = "<absolute>"; };
+		CCFA1BB82D923B6700733525 /* JRNL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JRNL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		D27BF5192D93B50300185DE8 /* Exceptions for "JRNL" folder in "JRNL" target */ = {
+		CCFA1BCA2D923B6900733525 /* Exceptions for "JRNL" folder in "JRNL" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = D2AB35E72D923B6A00D4BCC9 /* JRNL */;
+			target = CCFA1BB72D923B6700733525 /* JRNL */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		D27BF50F2D93B50300185DE8 /* JRNL */ = {
+		CCFA1BBA2D923B6700733525 /* JRNL */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				D27BF5192D93B50300185DE8 /* Exceptions for "JRNL" folder in "JRNL" target */,
+				CCFA1BCA2D923B6900733525 /* Exceptions for "JRNL" folder in "JRNL" target */,
 			);
 			path = JRNL;
 			sourceTree = "<group>";
@@ -32,7 +32,7 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D2AB35E52D923B6A00D4BCC9 /* Frameworks */ = {
+		CCFA1BB52D923B6700733525 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,74 +42,83 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D2AB35DF2D923B6A00D4BCC9 = {
+		CCFA1BAF2D923B6700733525 = {
 			isa = PBXGroup;
 			children = (
-				D27BF50F2D93B50300185DE8 /* JRNL */,
+				CCFA1BBA2D923B6700733525 /* JRNL */,
+				CCFA1BB92D923B6700733525 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		CCFA1BB92D923B6700733525 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CCFA1BB82D923B6700733525 /* JRNL.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D2AB35E72D923B6A00D4BCC9 /* JRNL */ = {
+		CCFA1BB72D923B6700733525 /* JRNL */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D2AB35FB2D923B6A00D4BCC9 /* Build configuration list for PBXNativeTarget "JRNL" */;
+			buildConfigurationList = CCFA1BCB2D923B6900733525 /* Build configuration list for PBXNativeTarget "JRNL" */;
 			buildPhases = (
-				D2AB35E42D923B6A00D4BCC9 /* Sources */,
-				D2AB35E52D923B6A00D4BCC9 /* Frameworks */,
-				D2AB35E62D923B6A00D4BCC9 /* Resources */,
+				CCFA1BB42D923B6700733525 /* Sources */,
+				CCFA1BB52D923B6700733525 /* Frameworks */,
+				CCFA1BB62D923B6700733525 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				D27BF50F2D93B50300185DE8 /* JRNL */,
+				CCFA1BBA2D923B6700733525 /* JRNL */,
 			);
 			name = JRNL;
 			packageProductDependencies = (
 			);
 			productName = JRNL;
-			productReference = D2AB35E82D923B6A00D4BCC9 /* JRNL.app */;
+			productReference = CCFA1BB82D923B6700733525 /* JRNL.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D2AB35E02D923B6A00D4BCC9 /* Project object */ = {
+		CCFA1BB02D923B6700733525 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					D2AB35E72D923B6A00D4BCC9 = {
+					CCFA1BB72D923B6700733525 = {
 						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
-			buildConfigurationList = D2AB35E32D923B6A00D4BCC9 /* Build configuration list for PBXProject "JRNL" */;
+			buildConfigurationList = CCFA1BB32D923B6700733525 /* Build configuration list for PBXProject "JRNL" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = D2AB35DF2D923B6A00D4BCC9;
+			mainGroup = CCFA1BAF2D923B6700733525;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = D2AB35DF2D923B6A00D4BCC9;
+			productRefGroup = CCFA1BB92D923B6700733525 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D2AB35E72D923B6A00D4BCC9 /* JRNL */,
+				CCFA1BB72D923B6700733525 /* JRNL */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D2AB35E62D923B6A00D4BCC9 /* Resources */ = {
+		CCFA1BB62D923B6700733525 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -119,7 +128,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D2AB35E42D923B6A00D4BCC9 /* Sources */ = {
+		CCFA1BB42D923B6700733525 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -129,7 +138,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		D2AB35FC2D923B6A00D4BCC9 /* Debug */ = {
+		CCFA1BCC2D923B6900733525 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -139,6 +148,8 @@
 				DEVELOPMENT_TEAM = QFY346K4GK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JRNL/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app uses your location for journal entries.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app uses your location for journal entries.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -149,7 +160,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = sg.JRNL;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.jrnl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -157,7 +168,7 @@
 			};
 			name = Debug;
 		};
-		D2AB35FD2D923B6A00D4BCC9 /* Release */ = {
+		CCFA1BCD2D923B6900733525 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -167,6 +178,8 @@
 				DEVELOPMENT_TEAM = QFY346K4GK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JRNL/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app uses your location for journal entries.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app uses your location for journal entries.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -177,7 +190,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = sg.JRNL;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.jrnl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -185,7 +198,7 @@
 			};
 			name = Release;
 		};
-		D2AB35FE2D923B6A00D4BCC9 /* Debug */ = {
+		CCFA1BCE2D923B6900733525 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -248,7 +261,7 @@
 			};
 			name = Debug;
 		};
-		D2AB35FF2D923B6A00D4BCC9 /* Release */ = {
+		CCFA1BCF2D923B6900733525 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -307,25 +320,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D2AB35E32D923B6A00D4BCC9 /* Build configuration list for PBXProject "JRNL" */ = {
+		CCFA1BB32D923B6700733525 /* Build configuration list for PBXProject "JRNL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D2AB35FE2D923B6A00D4BCC9 /* Debug */,
-				D2AB35FF2D923B6A00D4BCC9 /* Release */,
+				CCFA1BCE2D923B6900733525 /* Debug */,
+				CCFA1BCF2D923B6900733525 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D2AB35FB2D923B6A00D4BCC9 /* Build configuration list for PBXNativeTarget "JRNL" */ = {
+		CCFA1BCB2D923B6900733525 /* Build configuration list for PBXNativeTarget "JRNL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D2AB35FC2D923B6A00D4BCC9 /* Debug */,
-				D2AB35FD2D923B6A00D4BCC9 /* Release */,
+				CCFA1BCC2D923B6900733525 /* Debug */,
+				CCFA1BCD2D923B6900733525 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D2AB35E02D923B6A00D4BCC9 /* Project object */;
+	rootObject = CCFA1BB02D923B6700733525 /* Project object */;
 }
