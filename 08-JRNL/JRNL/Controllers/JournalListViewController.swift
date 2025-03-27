@@ -33,47 +33,57 @@ class JournalListViewController: UIViewController {
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("prepare \(String(describing: segue.identifier))")
-        print("sender \(String(describing: sender))")
+        //        print("prepare \(String(describing: segue.identifier))")
+        //        print("sender \(String(describing: sender))")
+        guard let entryDetailViewController = segue.destination as? JournalEntryDetailViewController else {
+            fatalError("Unexpected destination: \(segue.destination)")
+        }
+        entryDetailViewController.selectedJournalEntry = selectedJournalEntry
     }
 }
 
 extension JournalListViewController: UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return sampleJournalEntryData.journalEntries.count
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let journalCell = tableView.dequeueReusableCell(
-      withIdentifier: "journalCell",
-      for: indexPath
-    ) as! JournalListTableViewCell
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sampleJournalEntryData.journalEntries.count
+    }
     
-    let journalEntry = sampleJournalEntryData.journalEntries[indexPath.row]
-    // 날짜, 제목, 사진 표시
-    // 날짜는 "월 일, 년" 형식으로 표시
-    journalCell.dateLabel.text = journalEntry.date.formatted(.dateTime.month().day().year())
-    journalCell.titleLabel.text = journalEntry.entryTitle
-    journalCell.photoImageView.image = journalEntry.photo
-    
-    return journalCell
-  }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let journalCell = tableView.dequeueReusableCell(
+            withIdentifier: "journalCell",
+            for: indexPath
+        ) as! JournalListTableViewCell
+        
+        let journalEntry = sampleJournalEntryData.journalEntries[indexPath.row]
+        // 날짜, 제목, 사진 표시
+        // 날짜는 "월 일, 년" 형식으로 표시
+        journalCell.dateLabel.text = journalEntry.date.formatted(.dateTime.month().day().year())
+        journalCell.titleLabel.text = journalEntry.entryTitle
+        journalCell.photoImageView.image = journalEntry.photo
+        
+        return journalCell
+    }
 }
 
 
 extension JournalListViewController: UITableViewDelegate {
-  func tableView(
-    _ tableView: UITableView,
-    commit editingStyle: UITableViewCell.EditingStyle,
-    forRowAt indexPath: IndexPath
-  ) {
-    if editingStyle == .delete {
-      sampleJournalEntryData.journalEntries.remove(at: indexPath.row)
-      // 테이블 전체 새로고침
-      // tableView.reloadData()
-      
-      // 테이블에서 해당 행만 삭제 ( 애니메이션 효과 포함 )
-      tableView.deleteRows(at: [indexPath], with: .fade)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("didSelectedRowAt: \(indexPath)")
+        // 선택한 셀의 JournalEntry 객체를 가져와서 JournalEntryDetailViewController에 전달
+        let selectedJournalEntry = sampleJournalEntryData.journalEntries[indexPath.row]
+        print("selectedJournalEntry = selectedJournalEntry")
+        self.selectedJournalEntry = selectedJournalEntry
+        performSegue(withIdentifier: "showDetail", sender: self)
+        
     }
-  }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            sampleJournalEntryData.journalEntries.remove(at: indexPath.row)
+            // 테이블 전체 새로고침
+            // tableView.reloadData()
+            
+            // 테이블에서 해당 행만 삭제 ( 애니메이션 효과 포함 )
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
 }
