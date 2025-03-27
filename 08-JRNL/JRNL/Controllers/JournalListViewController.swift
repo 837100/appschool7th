@@ -8,29 +8,34 @@
 import UIKit
 
 class JournalListViewController: UIViewController {
-  
-  @IBOutlet weak var tableView: UITableView!
-  
-  var sampleJournalEntryData = SampleJournalEntryData()
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // 샘플 데이터 생성
-    sampleJournalEntryData.createSampleJournalEntryData()
-  }
-  
-  @IBAction func unwindNewEntryCancel(segue: UIStoryboardSegue) {
-    print("unwindNewEntryCancel")
-  }
-  
-  @IBAction func unwindNewEntrySave(segue: UIStoryboardSegue) {
-    if let sourceViewController = segue.source as? AddJournalEntryViewController,
-       let newJournalEntry = sourceViewController.newJournalEntry {
-      sampleJournalEntryData.journalEntries.append(newJournalEntry)
-      tableView.reloadData()
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var sampleJournalEntryData = SampleJournalEntryData()
+    var selectedJournalEntry: JournalEntry?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // 샘플 데이터 생성
+        sampleJournalEntryData.createSampleJournalEntryData()
     }
     
-  }
+    @IBAction func unwindNewEntryCancel(segue: UIStoryboardSegue) {
+        print("unwindNewEntryCancel")
+    }
+    
+    @IBAction func unwindNewEntrySave(segue: UIStoryboardSegue) {
+        if let sourceViewController = segue.source as? AddJournalEntryViewController,
+           let newJournalEntry = sourceViewController.newJournalEntry {
+            sampleJournalEntryData.journalEntries.append(newJournalEntry)
+            tableView.reloadData()
+        }
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("prepare \(String(describing: segue.identifier))")
+        print("sender \(String(describing: sender))")
+    }
 }
 
 extension JournalListViewController: UITableViewDataSource {

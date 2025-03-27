@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController {
-
+    
     @IBOutlet weak var mapView: MKMapView!
     
     let locationManager = CLLocationManager()
@@ -19,7 +19,7 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-
+        
         // 위치 정보 사용을 위한 설정
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -29,6 +29,20 @@ class MapViewController: UIViewController {
         // 샘플 데이터 생성 & 지도에 표시
         sampleJournalEntryData.createSampleJournalEntryData()
         mapView.addAnnotations(sampleJournalEntryData.journalEntries)
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if let segueIdentifier = segue.identifier {
+            if segueIdentifier == "showMapDetail" {
+                guard let entryDetailViewController = segue.destination as? JournalEntryDetailViewController else {
+                    fatalError("Unexpected destination: \(segue.destination)")
+                }
+                entryDetailViewController.selectedJournalEntry = selectedJournalEntry
+                
+            }
+        }
     }
 }
 
@@ -75,6 +89,7 @@ extension MapViewController: MKMapViewDelegate {
         annotationView view: MKAnnotationView,
         calloutAccessoryControlTapped control: UIControl
     ) {
+        print("calloutAccessoryControlTapped")
         guard let annotation = mapView.selectedAnnotations.first as? JournalEntry else {
             return
         }
