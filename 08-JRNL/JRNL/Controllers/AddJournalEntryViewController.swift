@@ -171,3 +171,20 @@ extension AddJournalEntryViewController: CLLocationManagerDelegate {
         print("Error: \(error)")
     }
 }
+
+extension AddJournalEntryViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let selectedImage = info[.originalImage] as? UIImage else {
+            fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
+        }
+        let smallerImage = selectedImage.preparingThumbnail(
+            of: CGSize(width:200, height: 200)
+        )
+        photoImageView.image = smallerImage
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+}
