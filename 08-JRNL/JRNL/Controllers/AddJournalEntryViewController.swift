@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class AddJournalEntryViewController: UIViewController {
+class AddJournalEntryViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet weak var getLocationSwitch: UISwitch!
     @IBOutlet weak var getLocationSwitchLabel: UILabel!
@@ -63,7 +63,20 @@ class AddJournalEntryViewController: UIViewController {
             }
         }
     }
-    
+    // MARK: -Actions
+    @IBAction func getPhoto(_ sender: UITapGestureRecognizer) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        
+        #if targetEnvironment(simulator)
+        imagePickerController.sourceType = .photoLibrary
+        #else
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.showsCameraControls = true
+        #endif
+        
+        present(imagePickerController, animated: true)
+    }
     // MARK: - Methods
     func updateSaveButtonState() {
         let titleText = titleTextField.text ?? ""
