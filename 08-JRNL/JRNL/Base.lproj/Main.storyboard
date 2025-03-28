@@ -295,7 +295,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="vRg-bx-MXv" id="ak3-2v-Cnt"/>
-                        <segue destination="Jep-kH-EVE" kind="show" identifier="showDetail" id="U49-zh-g0r"/>
+                        <segue destination="Jep-kH-EVE" kind="show" identifier="showDetail" id="pcn-UU-7Z9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5oq-TQ-ETO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -484,7 +484,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="U49-zh-g0r"/>
+        <segue reference="pcn-UU-7Z9"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="face.smiling" catalog="system" width="128" height="123"/>

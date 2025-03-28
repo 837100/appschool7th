@@ -11,12 +11,11 @@ class JournalListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var sampleJournalEntryData = SampleJournalEntryData()
     var selectedJournalEntry: JournalEntry?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        SharedData.shared.loadJournalEntriesData()
     }
     
     @IBAction func unwindNewEntryCancel(segue: UIStoryboardSegue) {
@@ -32,12 +31,14 @@ class JournalListViewController: UIViewController {
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //        print("prepare \(String(describing: segue.identifier))")
-        //        print("sender \(String(describing: sender))")
-        guard let entryDetailViewController = segue.destination as? JournalEntryDetailViewController else {
-            fatalError("Unexpected destination: \(segue.destination)")
+        if let segueIdentifier = segue.identifier {
+            if segueIdentifier == "showDetail" {
+                guard let entryDetailViewController = segue.destination as? JournalEntryDetailViewController else {
+                    fatalError("Unexpected destination: \(segue.destination)")
+                }
+                entryDetailViewController.selectedJournalEntry = selectedJournalEntry
+            }
         }
-        entryDetailViewController.selectedJournalEntry = selectedJournalEntry
     }
 }
 
@@ -55,9 +56,11 @@ extension JournalListViewController: UITableViewDataSource {
         let journalEntry = SharedData.shared.getJournalEntry(at: indexPath.row)
         // 날짜, 제목, 사진 표시
         // 날짜는 "월 일, 년" 형식으로 표시
-        journalCell.dateLabel.text = journalEntry.date.formatted(.dateTime.month().day().year())
+        journalCell.dateLabel.text = journalEntry.dateString
         journalCell.titleLabel.text = journalEntry.entryTitle
-        journalCell.photoImageView.image = journalEntry.photo
+        if let photoData = journalEntry.photoData {
+            journalCell.photoImageView.image = UIImage(data: photoData)
+        }
         
         return journalCell
     }
