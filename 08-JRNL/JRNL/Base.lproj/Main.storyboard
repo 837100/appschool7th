@@ -46,7 +46,7 @@
         <scene sceneID="cAl-cg-na9">
             <objects>
                 <tableViewController id="Jep-kH-EVE" customClass="JournalEntryDetailViewController" customModule="JRNL" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Tt7-v9-hfN">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Tt7-v9-hfN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -81,9 +81,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Okf-4G-W45">
+                                                <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Okf-4G-W45" customClass="RatingView" customModule="JRNL" customModuleProvider="target">
                                                     <rect key="frame" x="81" y="8" width="252" height="44"/>
-                                                    <color key="backgroundColor" systemColor="systemCyanColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="mE2-5Z-fKd"/>
                                                         <constraint firstAttribute="width" constant="252" id="oc7-61-Pt4"/>
@@ -207,6 +206,7 @@
                         <outlet property="dateLabel" destination="BBt-hy-fgS" id="RXb-JZ-UDc"/>
                         <outlet property="mapImageView" destination="h4b-fZ-QTg" id="gem-2W-7aH"/>
                         <outlet property="photoImageView" destination="TrN-yv-eoI" id="hin-6m-gUA"/>
+                        <outlet property="ratingView" destination="Okf-4G-W45" id="P21-sy-CqU"/>
                         <outlet property="titleLabel" destination="IQ1-MW-E4E" id="c76-hs-cM9"/>
                     </connections>
                 </tableViewController>
@@ -313,9 +313,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wHe-wh-Bmx">
                                 <rect key="frame" x="20" y="76" width="374" height="469"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ER3-aa-vev">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ER3-aa-vev" customClass="RatingView" customModule="JRNL" customModuleProvider="target">
                                         <rect key="frame" x="61" y="0.0" width="252" height="44"/>
-                                        <color key="backgroundColor" systemColor="systemCyanColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="JMF-dx-SFB"/>
                                             <constraint firstAttribute="width" constant="252" id="inr-W7-032"/>
@@ -398,6 +397,7 @@
                         <outlet property="getLocationSwitch" destination="fFc-wK-ZQn" id="aSg-OE-PHs"/>
                         <outlet property="getLocationSwitchLabel" destination="BkI-yd-nTI" id="zdV-yS-eHI"/>
                         <outlet property="photoImageView" destination="zkK-Wp-4lq" id="J1X-Rv-dky"/>
+                        <outlet property="ratingView" destination="ER3-aa-vev" id="tWc-S8-u3q"/>
                         <outlet property="saveButton" destination="6pF-aT-pdX" id="2Yx-g0-9VN"/>
                         <outlet property="titleTextField" destination="4gQ-vC-65f" id="8OT-3w-ePt"/>
                     </connections>
@@ -495,9 +495,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemCyanColor">
-            <color red="0.1960784314" green="0.67843137249999996" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
