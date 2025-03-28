@@ -63,17 +63,17 @@ class AddJournalEntryViewController: UIViewController, UINavigationControllerDel
             }
         }
     }
-    // MARK: -Actions
+    // MARK: - Actions
     @IBAction func getPhoto(_ sender: UITapGestureRecognizer) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         
-        #if targetEnvironment(simulator)
+#if targetEnvironment(simulator)
         imagePickerController.sourceType = .photoLibrary
-        #else
+#else
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.showsCameraControls = true
-        #endif
+#endif
         
         present(imagePickerController, animated: true)
     }

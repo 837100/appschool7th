@@ -36,13 +36,21 @@ class SharedData {
     // 데이터 추가
     func addJournalEntry(_ entry: JournalEntry) {
         journalEntries.append(entry)
-        savaJournalEntrtiesData()
+        saveJournalEntriesData()
     }
     
     // 데이터 삭제
     func removeJournalEntry(at index: Int) {
         journalEntries.remove(at: index)
-        savaJournalEntrtiesData()
+        saveJournalEntriesData()
+    }
+    
+    // 선택된 데이터 삭제
+    func removeSelected(journalEntry: JournalEntry) {
+        if let index = journalEntries.firstIndex(where: { $0.id == journalEntry.id}) {
+            journalEntries.remove(at: index)
+            saveJournalEntriesData()
+        }
     }
     
     // MARK - Persistence
@@ -63,7 +71,7 @@ class SharedData {
         }
     }
     
-    func savaJournalEntrtiesData() {
+    func saveJournalEntriesData() {
         let pathDirectory = getDocumentDirectory()
         // 혹시나 해당 디렉토리가 없으면 만들고 있으면 넘어감
         try? FileManager().createDirectory(at: pathDirectory, withIntermediateDirectories: true)
@@ -79,3 +87,4 @@ class SharedData {
         }
     }
 }
+
