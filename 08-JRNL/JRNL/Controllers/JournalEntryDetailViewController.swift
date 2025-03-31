@@ -29,7 +29,7 @@ class JournalEntryDetailViewController: UITableViewController {
         guard let selectedJournalEntry = selectedJournalEntry else {
             return
         }
-        dateLabel.text = selectedJournalEntry.dateString
+        dateLabel.text = selectedJournalEntry.title
         ratingView.rating = selectedJournalEntry.rating
 //        ratingView.isUserInteractionEnabled = false // Main.storyboard에서 UserInteractionEnabled 체크 안한것과 같음
         titleLabel.text = selectedJournalEntry.entryTitle
