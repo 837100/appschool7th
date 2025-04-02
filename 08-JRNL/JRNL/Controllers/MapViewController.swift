@@ -99,3 +99,4 @@ extension MapViewController: MKMapViewDelegate {
         performSegue(withIdentifier: "showMapDetail", sender: self)
     }
 }
+
