@@ -41,6 +41,7 @@
 		D2B3D0892D9CC81000C2423A /* JRNLWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = JRNLWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B3D08B2D9CC81000C2423A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		D2B3D08D2D9CC81000C2423A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		D2B3D0A02D9CCB2500C2423A /* JRNLWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JRNLWidgetExtension.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -58,6 +59,14 @@
 			);
 			target = D2B3D0882D9CC81000C2423A /* JRNLWidgetExtension */;
 		};
+		D2B3D0A22D9CCC0200C2423A /* Exceptions for "JRNL" folder in "JRNLWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Models/JournalEntry.swift,
+				Models/SharedData.swift,
+			);
+			target = D2B3D0882D9CC81000C2423A /* JRNLWidgetExtension */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -65,6 +74,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				CCFA1BCA2D923B6900733525 /* Exceptions for "JRNL" folder in "JRNL" target */,
+				D2B3D0A22D9CCC0200C2423A /* Exceptions for "JRNL" folder in "JRNLWidgetExtension" target */,
 			);
 			path = JRNL;
 			sourceTree = "<group>";
@@ -102,6 +112,7 @@
 		CCFA1BAF2D923B6700733525 = {
 			isa = PBXGroup;
 			children = (
+				D2B3D0A02D9CCB2500C2423A /* JRNLWidgetExtension.entitlements */,
 				CCFA1BBA2D923B6700733525 /* JRNL */,
 				D2B3D08F2D9CC81000C2423A /* JRNLWidget */,
 				D2B3D08A2D9CC81000C2423A /* Frameworks */,
@@ -262,6 +273,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = JRNL/JRNL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QFY346K4GK;
@@ -294,6 +306,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = JRNL/JRNL.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QFY346K4GK;
@@ -445,6 +458,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = JRNLWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QFY346K4GK;
@@ -472,6 +486,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = JRNLWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QFY346K4GK;

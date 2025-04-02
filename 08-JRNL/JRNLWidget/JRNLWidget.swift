@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), emoji: "😀")
+        SimpleEntry(date: Date(), journalEntryDate: "JRNL", journalEntryTitle: "")
     }
 
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
@@ -20,6 +20,16 @@ struct Provider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
+        
+        let currentDate = Date()
+        
+        SharedData.shared.fetchJournalEntries()
+        let journalEntries = SharedData.shared.getAllJournalEntries()
+        
+        for minuteOffSet in 0..<journalEntries.count {
+            let entryDate = currentDate.addingTimeInterval(TimeInterval(60 * minuteOffSet))
+            let entry = SimpleEntry(date: , journalEntryDate: <#T##String#>, journalEntryTitle: <#T##String#>)
+        }
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
@@ -40,7 +50,8 @@ struct Provider: TimelineProvider {
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let emoji: String
+    var journalEntryDate: String
+    var journalEntryTitle: String
 }
 
 struct JRNLWidgetEntryView : View {
