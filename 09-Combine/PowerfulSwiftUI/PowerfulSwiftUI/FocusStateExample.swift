@@ -23,38 +23,52 @@ struct FocusStateExample: View {
     @FocusState private var focusedField: Field?
     
     var body: some View {
-        VStack {
-            TextField("Username", text: $username)
-                // 포커스 상태를 관리하는 데 사용됩니다.
-                .focused($focusedField, equals: .username)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .submitLabel(.next)
-                .onSubmit {
-                    focusedField = .password
-                }
-            
-            SecureField("Password", text: $password)
-                .focused($focusedField, equals: .password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .submitLabel(.done)
-                .onSubmit {
+        ZStack {
+            Color.clear // 투명한 배경 뷰
+                .contentShape(Rectangle())
+                .onTapGesture {
                     focusedField = nil
                 }
+                .ignoresSafeArea()
             
-            VStack(spacing: 20) {
-                Button("Focus Username") {
-                    focusedField = .username
-                }
-                .buttonStyle(BorderedProminentButtonStyle())
+            VStack {
+                TextField("Username", text: $username)
+                // 포커스 상태를 관리하는 데 사용됩니다.
+                    .focused($focusedField, equals: .username)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .submitLabel(.next)
+                    .onSubmit {
+                        focusedField = .password
+                    }
                 
-                Button("Focus Password") {
-                    focusedField = .password
+                SecureField("Password", text: $password)
+                    .focused($focusedField, equals: .password)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .submitLabel(.done)
+                    .onSubmit {
+                        focusedField = nil
+                    }
+                
+                VStack(spacing: 20) {
+                    Button("Focus Username") {
+                        focusedField = .username
+                    }
+                    .buttonStyle(BorderedProminentButtonStyle())
+                    
+                    Button("Focus Password") {
+                        focusedField = .password
+                    }
+                    .buttonStyle(BorderedProminentButtonStyle())
+                    
+                    Button("Dissmiss Keyboard") {
+                        focusedField = nil
+                    }
+                    .buttonStyle(BorderedProminentButtonStyle())
                 }
-                .buttonStyle(BorderedButtonStyle())
+                .padding()
             }
             .padding()
         }
-        .padding()
     }
 }
 
