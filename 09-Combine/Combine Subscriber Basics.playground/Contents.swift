@@ -18,3 +18,21 @@ let basicSink = numbersPublisher.sink { number in
 
 basicSink.cancel() // sink는 사용 후 cancel해줘야 합니다.
 
+// ==== 예제 2: sink Subscrber - 완료 처리 추가 ====
+print("\n2 sink Subscriber - 완료 이벤트 처리")
+print("--------------------------")
+
+// 완료 이벤트도 처리하는 sink
+let completionSink = numbersPublisher.sink(
+    receiveCompletion: {completion in
+        switch completion {
+        case .finished:
+            print("모든 값 수신 완료!")
+        case .failure(let error):
+            print("오류 발생: \(error)")
+        }
+    },
+    receiveValue: { number in
+        print("값 수신: \(number)")
+    })
+
