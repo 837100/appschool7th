@@ -6,8 +6,14 @@
 //
 
 import Foundation
+import Combine
 
 // 에러 타입 정의
+enum APIError: LocalizedError {
+    /// 잘못된 요청, 예: 잘못된 URL
+    case invalidRequestError(String)
+}
+
 enum NetworkError: Error {
     case invalidRequestError(String)
     case transportError(Error)
@@ -22,6 +28,7 @@ struct UserNameAvailableMessage: Codable {
 }
 
 class AuthenticationService {
+    // 기존 비동기 메서드
     func checkUserNameAvailableOldSchool(userName: String,
                                          completion: @escaping(Result<Bool, NetworkError>) -> Void) {
         guard let url = URL(string: "http://localhost:8080/isUserNameAvailable?userName=\(userName)") else {
@@ -71,5 +78,18 @@ class AuthenticationService {
         }
         // 요청 태스크를 시작
         task.resume()
+    }
+    
+    // Publisher를 활용한 비동기 메서드
+    nonisolated func checkUserNameAvailablePublisher(userName: String) -> AnyPublisher<Bool, Error> {
+        guard let url = URL(string: "http://localhost:8080/isUserNameAvailable?userName=\(userName)") else {
+            return Fail(error: APIError.invalidRequestError("URL invalid")).eraseToAnyPublisher()
+        }
+        
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .map(\.data)
+            .decode(type: UserNameAvailableMessage.self, decoder: JSONDecoder())
+            .map(\.isAvailable)
+            .eraseToAnyPublisher()
     }
 }
