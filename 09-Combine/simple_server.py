@@ -54,7 +54,7 @@ class UserNameHandler(BaseHTTPRequestHandler):
                         print("... throwing maintenance error")
                         self.send_response(500)
                         self.send_header('Content-Type', 'application/json')
-                        self.send_header('Retry-After', '120')
+                        self.send_header('Retry-After', '12')
                         self.end_headers()
                         error_response = {
                             "error": True,
@@ -69,7 +69,7 @@ class UserNameHandler(BaseHTTPRequestHandler):
                 if username == 'maintenance!':
                     self.send_response(500)
                     self.send_header('Content-Type', 'application/json')
-                    self.send_header('Retry-After', '120')
+                    self.send_header('Retry-After', '12')
                     self.end_headers()
                     error_response = {
                         "error": "Internal Server Error",
