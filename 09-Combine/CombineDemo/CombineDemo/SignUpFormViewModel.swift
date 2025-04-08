@@ -107,12 +107,12 @@ class SignUpFormViewModel: ObservableObject {
     
     init() {
         // dump 연산자 사용 예시
-        print("HERE!")
+        
         Just(Date())
             .dump()
             .sink { _ in }
             .store(in: &ceancellables)
-        print("HERE END!")
+        
         
         //  유저 이름 유효성 검사
         isUsernameAvailablePublisher
