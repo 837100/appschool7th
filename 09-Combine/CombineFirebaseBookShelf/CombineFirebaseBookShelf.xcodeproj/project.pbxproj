@@ -10,6 +10,7 @@
 		D2ABF4A72DA5FB1400D18372 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D2ABF4A62DA5FB1400D18372 /* FirebaseAnalytics */; };
 		D2ABF4AA2DA600AF00D18372 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D2ABF4A92DA600AF00D18372 /* FirebaseAuth */; };
 		D2ABF4AC2DA600B600D18372 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D2ABF4AB2DA600B600D18372 /* FirebaseFirestore */; };
+		D2ABF4D72DA616C200D18372 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = D2ABF4D62DA616C200D18372 /* FirebaseFirestoreCombine-Community */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2ABF4A72DA5FB1400D18372 /* FirebaseAnalytics in Frameworks */,
+				D2ABF4D72DA616C200D18372 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				D2ABF4AA2DA600AF00D18372 /* FirebaseAuth in Frameworks */,
 				D2ABF4AC2DA600B600D18372 /* FirebaseFirestore in Frameworks */,
 			);
@@ -85,6 +87,7 @@
 				D2ABF4A62DA5FB1400D18372 /* FirebaseAnalytics */,
 				D2ABF4A92DA600AF00D18372 /* FirebaseAuth */,
 				D2ABF4AB2DA600B600D18372 /* FirebaseFirestore */,
+				D2ABF4D62DA616C200D18372 /* FirebaseFirestoreCombine-Community */,
 			);
 			productName = CombineFirebaseBookShelf;
 			productReference = D2ABF4952DA5F90E00D18372 /* CombineFirebaseBookShelf.app */;
@@ -374,6 +377,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D2ABF4A52DA5FB1400D18372 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		D2ABF4D62DA616C200D18372 /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2ABF4A52DA5FB1400D18372 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
