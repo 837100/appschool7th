@@ -23,7 +23,7 @@ struct ContentView: View {
                     }
                 }
                 Section(header: Text("Closure-based APIs")) {
-                    NavigationLink(destination: BookDetailViewModel()) {
+                    NavigationLink(destination: OnDemandBookDetailsViewWithCombine()) {
                         Label("On-demand fetch a single book", systemImage: "book")
                     }
                     NavigationLink(destination: OnDemandBookListViewWithCombine()) {

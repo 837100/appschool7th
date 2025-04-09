@@ -1,5 +1,5 @@
 //
-//  OnDemandBookDetailsViewWithClosures.swift
+//  OnDemandBookDetailsViewWithCombine.swift
 //  CombineFirebaseBookShelf
 //
 //  Created by NO SEONGGYEONG on 4/9/25.
@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseFirestore
+import FirebaseFirestoreCombineSwift
 
 private class BookDetailViewModel: ObservableObject {
     @Published var book = Book.empty
@@ -15,23 +16,15 @@ private class BookDetailViewModel: ObservableObject {
     private var db = Firestore.firestore()
     
     fileprivate func fetchBook() {
-        // Firestore의 document
-        let docRef = db.collection("books").document("hitchhiker")
-        
-        docRef.getDocument(as: Book.self) { [weak self] result in
-            switch result {
-            case .success(let book):
-                self?.book = book
-                self?.errorMessage = nil
-            case .failure(let error):
-                self?.book = Book.empty
-                self?.errorMessage = error.localizedDescription
+        db.collection("books").document("hitchhiker").getDocument()
+            .tryMap { documentSnapshot in
+                try documentSnapshot.data(as: Book.self)
             }
-        }
+            .replaceError(with: Book.empty)
+            .assign(to: &$book)
     }
 }
-
-struct OnDemandBookDetailsViewWithClosures: View {
+struct OnDemandBookDetailsViewWithCombine: View {
     @StateObject private var viewModel = BookDetailViewModel()
     
     var body: some View {
@@ -54,14 +47,13 @@ struct OnDemandBookDetailsViewWithClosures: View {
                 }
             }
         }
-        
         .navigationTitle("Book Details")
-        .onAppear {
+        .onAppear() {
             viewModel.fetchBook()
         }
         .refreshable {
             viewModel.fetchBook()
         }
-        
     }
 }
+
