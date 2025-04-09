@@ -18,7 +18,7 @@ struct ContentView: View {
                     NavigationLink(destination: OnDemandBookListViewWithClosures()) {
                         Label("On-demand fetch list of books", systemImage: "books.vertical")
                     }
-                    NavigationLink(destination: OnDemandBookDetailsViewWithClosures()) {
+                    NavigationLink(destination: LiveBookListViewWithClosures()) {
                         Label("Live books list", systemImage: "bolt")
                     }
                 }
