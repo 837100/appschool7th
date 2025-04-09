@@ -6,11 +6,53 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
+private class BookListViewModel: ObservableObject {
+    @Published var books: [Book] = []
+    @Published var errorMessage: String?
+    
+    private var db = Firestore.firestore()
+    
+    fileprivate func fetchBooks() {
+        // Firestore의 collectionReference를 사용하여 FIrestore의 collection을 가져온다.
+        db.collection("books").getDocuments { querySnapshot, error in
+            
+            // MARK: getDocuments 클로저 START
+            guard let documents = querySnapshot?.documents else {
+                self.errorMessage = error?.localizedDescription
+                return
+            }
+            self.books = documents
+            // 도큐먼트를 Book 객체로 변환 (compactMap을 사용하여 nil 값은 제외)
+                .compactMap { [weak self] querySnapshotDocument in
+                    // FIrestore document 를 Book 객체로 변환하고, 실패시 nil 반환
+                    let result = Result { try querySnapshotDocument.data(as: Book.self) }
+                    switch result {
+                    case .success(let book):
+                        self?.errorMessage = nil
+                        return book
+                    case .failure(let error):
+                        self?.errorMessage = error.localizedDescription
+                        return nil
+                    }
+                }
+            // MARK: getDocuments 클로저 end
+        }
+    }
+}
 struct OnDemandBookListViewWithClosures: View {
+    @StateObject private var viewModel = BookListViewModel()
+    
     var body: some View {
-        VStack {
-        EmptyView()
+        List(viewModel.books) { book in
+            Text(book.title)
+        }
+        .task {
+            viewModel.fetchBooks()
+        }
+        .refreshable {
+            viewModel.fetchBooks()
         }
         .navigationTitle("Book List")
         
