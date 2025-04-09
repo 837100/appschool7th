@@ -7,13 +7,26 @@
 
 import SwiftUI
 import FirebaseCore
+import FirebaseAuth
+import FirebaseFirestore
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    FirebaseApp.configure()
-    return true
-  }
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        // 애뮬레이터 설정
+        Auth.auth().useEmulator(withHost: "localhost", port: 9099)
+        Firestore.firestore().useEmulator(withHost: "localhost", port: 8080)
+        
+        // Firestore Settings
+        let settings = Firestore.firestore().settings
+        
+        // Firestore
+        settings.cacheSettings = MemoryCacheSettings(garbageCollectorSettings: MemoryLRUGCSettings())
+        settings.isSSLEnabled = false
+        Firestore.firestore().settings = settings
+        return true
+    }
 }
 @main
 struct CombineFirebaseBookShelfApp: App {
