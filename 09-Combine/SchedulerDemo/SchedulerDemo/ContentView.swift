@@ -28,9 +28,9 @@ struct ContentView: View {
         VStack {
             Button("Toggle from main thread") {
                 // 실행 흐름을 생성하여 비동기적으로 실행
-//                DispatchQueue.global().async {
+                DispatchQueue.global().async {
                     viewModel.demo.toggle()
-//                }
+                }
             }
             .buttonStyle(.borderedProminent)
         }
