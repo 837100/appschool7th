@@ -33,10 +33,15 @@ func slice(_ ingredients: [String]) async -> [String] {
 }
 
 // 비동기적으로 샌드위치를 만드는 함수
-func makeSandwich(bread: String, ingredients: [String], codiments: [String]) async -> String {
+func makeSandwich(bread: String, ingredients: [String], condiments: [String]) async -> String {
     sandwichMakerSays("샌드위치 준비 중...")
     
     // 빵 토스트와 재료 자르기를 병렬로 실행
     async let toasted = toastBread(bread)
     async let sliced = slice(ingredients)
+    
+    sandwichMakerSays("(\(await toasted)에 \(condiments.joined(separator: ",  "))를 바르는 중")
+    sandwichMakerSays("\(await sliced.joined(separator: ", ")), \(condiments.joined(separator: ",  "))")
 }
+
+

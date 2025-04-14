@@ -270,3 +270,6 @@ iOSInjectionProject/
 # End of https://www.toptal.com/developers/gitignore/api/macos,xcode,visualstudiocode,flutter,swift,java,dart
 09-Combine/CombineFirebaseBookShelf/CombineFirebaseBookShelf/GoogleService-Info.plist
 .DS_Store
+09-Combine/WordBrowser/Dev.xcconfig
+09-Combine/WordBrowser/Prod.xcconfig
+*.xcconfig

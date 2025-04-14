@@ -8,7 +8,15 @@
 import SwiftUI
 
 struct LibraryView: View {
+    @State var viewModel = LibraryViewModel()
     var body: some View {
+        NavigationStack {
+            List {
+            
+            }
+        }
+        .navigationTitle("라이브러리")
+        
         
     }
 }

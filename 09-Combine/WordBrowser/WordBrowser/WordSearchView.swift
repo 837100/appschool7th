@@ -11,7 +11,7 @@ struct WordSearchView: View {
     var body: some View {
         VStack {
             EmptyView()
-                .navigationTitle("라이브러리")
+                .navigationTitle("단어 검색")
         }
     }
 }
