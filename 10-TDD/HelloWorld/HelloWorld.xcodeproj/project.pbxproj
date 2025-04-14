@@ -21,9 +21,22 @@
 		D2974DCE2DACD63F007862E7 /* FizzBuzzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FizzBuzzTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D272CFCF2DACDDB2003AC3E8 /* Exceptions for "HelloWorld" folder in "FizzBuzzTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				FizzBuzz.swift,
+			);
+			target = D2974DCD2DACD63F007862E7 /* FizzBuzzTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		D2974D812DACD297007862E7 /* HelloWorld */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D272CFCF2DACDDB2003AC3E8 /* Exceptions for "HelloWorld" folder in "FizzBuzzTests" target */,
+			);
 			path = HelloWorld;
 			sourceTree = "<group>";
 		};

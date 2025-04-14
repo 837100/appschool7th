@@ -6,5 +6,5 @@
 //
 
 func fizzBuzz(_ number: Int) -> String {
-    
+    return ""
 }
