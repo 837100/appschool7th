@@ -273,3 +273,4 @@ iOSInjectionProject/
 09-Combine/WordBrowser/Dev.xcconfig
 09-Combine/WordBrowser/Prod.xcconfig
 *.xcconfig
+.DS_Store
