@@ -9,36 +9,33 @@ import XCTest
 
 
 final class FizzBuzzTests: XCTestCase {
-    
-    override class func setUp() {
-        print("setUp")
-    }
-    
-    override func tearDown() {
-        print("tearDown")
-    }
-    
-    // 제일 처음에 실행되는 함수
+        
+    // 제일 처음에 실행되는 함수 호출
     override func setUpWithError() throws {
         print("setUpWithError")
     }
     
-    // 제일 마지막에 실행되는 함수
+    // 제일 마지막에 실행되는 함수 호출
     override func tearDownWithError() throws {
         print("tearDownWithError")
     }
     
-    func testFizzBuzzDivisibleBy3() {
+    func testFizzBuzzDivisibleBy3() throws {
         let result = fizzBuzz(3)
         XCTAssertEqual(result, "fizz")
     }
-    func testFizzBuzzDivisibleBy5() {
+    func testFizzBuzzDivisibleBy5() throws{
         let result = fizzBuzz(5)
         XCTAssertEqual(result, "buzz")
     }
-    func testFizzBuzzDivisibleBy15() {
+    func testFizzBuzzDivisibleBy15() throws {
         let result = fizzBuzz(15)
-        XCTAssertEqual(result, "fizzbuzz")
+        XCTAssertEqual(result, "fizz-buzz")
+    }
+    
+    func testFizzBuzzNotDivisibaleBy3Or5ReturnInput() throws {
+        let result = fizzBuzz(7)
+        XCTAssertEqual(result,"7")
     }
     
 }
