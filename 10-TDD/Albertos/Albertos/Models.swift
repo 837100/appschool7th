@@ -7,14 +7,24 @@
 
 import Foundation
 
-struct MenuItem {
+struct MenuItem: Identifiable {
     let category: String
     let name: String
+    let spicy: Bool
+    
+    var id: String {
+        name
+    }
+    
 }
 
-struct MenuSection {
+struct MenuSection: Identifiable {
     let category: String
     let items: [MenuItem]
+    
+    var id: String {
+        category
+    }
 }
 
 func groupMenuByCategory(_ menu: [MenuItem]) -> [MenuSection] {
@@ -26,3 +36,14 @@ func groupMenuByCategory(_ menu: [MenuItem]) -> [MenuSection] {
         .sorted { $0.category > $1.category }
 }
 
+
+let menu = [
+    MenuItem(category: "starters", name: "Caprese Salad", spicy: false),
+    MenuItem(category: "starters", name: "Arancini Balls", spicy: true),
+    MenuItem(category: "pastas", name: "Penne all'Arrabbiata", spicy: true),
+    MenuItem(category: "pastas", name: "Spaghetti Carbonara", spicy: false),
+    MenuItem(category: "drinks", name: "Water", spicy: false),
+    MenuItem(category: "drinks", name: "Red Wine", spicy: false),
+    MenuItem(category: "desserts", name: "Tiramisù", spicy: false),
+    MenuItem(category: "desserts", name: "Crema Catalana", spicy: false),
+]

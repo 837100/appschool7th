@@ -14,10 +14,10 @@ final class MenuGroupingTests: XCTestCase {
     // 한 카테고리당 섹션이 하나씩 있어야 한다.
     func testMenuWithManyCategoriesReturnsOneSectionPerCategory() {
         let menu = [
-            MenuItem(category: "pastas", name: "pizzascholl"),
-            MenuItem(category: "pastas", name: "domino"),
-            MenuItem(category: "drink", name: "cola"),
-            MenuItem(category: "desserts", name: "cake"),
+            MenuItem.fixture(category: "pastas", name: "pizzascholl", spicy: false),
+            MenuItem.fixture(category: "pastas", name: "domino", spicy: true),
+            MenuItem.fixture(category: "drink", name: "cola" , spicy: false),
+            MenuItem.fixture(category: "desserts", name: "cake", spicy: false),
         ]
 //            .shuffled()
         
@@ -38,8 +38,8 @@ final class MenuGroupingTests: XCTestCase {
     func testMenuWithOneCategoryReturnsOneSection() {
         // Arragne : 카테고리가 하나인 메뉴
         let menu = [
-            MenuItem(category: "pastas", name: "name"),
-            MenuItem(category: "pastas", name: "other name"),
+            MenuItem.fixture(category: "pastas", name: "name"),
+            MenuItem.fixture(category: "pastas", name: "other name"),
         ]
         
         // Act
