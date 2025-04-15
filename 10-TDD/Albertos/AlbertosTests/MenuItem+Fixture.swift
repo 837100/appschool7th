@@ -17,6 +17,7 @@ extension MenuItem {
             category: category,
             name: name,
             spicy: spicy,
+            price: 0,
         )
     }
 }

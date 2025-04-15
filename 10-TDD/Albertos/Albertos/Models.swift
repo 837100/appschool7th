@@ -11,6 +11,7 @@ struct MenuItem: Identifiable {
     let category: String
     let name: String
     let spicy: Bool
+    let price: Double
     
     var id: String {
         name
@@ -38,12 +39,12 @@ func groupMenuByCategory(_ menu: [MenuItem]) -> [MenuSection] {
 
 
 let menu = [
-    MenuItem(category: "starters", name: "Caprese Salad", spicy: false),
-    MenuItem(category: "starters", name: "Arancini Balls", spicy: true),
-    MenuItem(category: "pastas", name: "Penne all'Arrabbiata", spicy: true),
-    MenuItem(category: "pastas", name: "Spaghetti Carbonara", spicy: false),
-    MenuItem(category: "drinks", name: "Water", spicy: false),
-    MenuItem(category: "drinks", name: "Red Wine", spicy: false),
-    MenuItem(category: "desserts", name: "Tiramisù", spicy: false),
-    MenuItem(category: "desserts", name: "Crema Catalana", spicy: false),
+    MenuItem(category: "starters", name: "Caprese Salad", spicy: false, price: 12.5),
+    MenuItem(category: "starters", name: "Arancini Balls", spicy: true, price: 10.0),
+    MenuItem(category: "pastas", name: "Penne all'Arrabbiata", spicy: true, price: 15.0),
+    MenuItem(category: "pastas", name: "Spaghetti Carbonara", spicy: false, price: 14.0),
+    MenuItem(category: "drinks", name: "Water", spicy: false, price: 2.5),
+    MenuItem(category: "drinks", name: "Red Wine", spicy: false, price: 8.0),
+    MenuItem(category: "desserts", name: "Tiramisù", spicy: false, price: 6.0),
+    MenuItem(category: "desserts", name: "Crema Catalana", spicy: false, price: 7.0),
 ]
