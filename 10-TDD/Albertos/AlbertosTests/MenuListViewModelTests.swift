@@ -13,21 +13,14 @@ final class MenuListViewModelTests: XCTestCase {
     
     // 메뉴 리스트 첫 Publisher는 빈 리스트를 발행한다.
     func testWhenFetchingStartsPublishesEmptyMenu() throws {
-        try XCTSkipIf(true, "MenuListViewModelTests: testWhenFetchingStartsPublishersEmptyMenu")
-        let sut = MenuList.ViewModel (
-            menuFetching: MenuFetchingPlaceholder()
-        )
+        // Arrange
+        let viewModel = MenuList.ViewModel(menuFetching: MenuFetchingStub(returning: .success([])))
         
-        let expectation = XCTestExpectation(description: "Empty menu list")
+        // Act
+        let sections = try viewModel.sections.get()
         
-        let cancellable = sut.$sections
-            .dropFirst()
-            .sink { sections in
-                XCTAssertEqual(sections, [])
-                expectation.fulfill()
-            }
-        wait(for: [expectation], timeout: 1.0)
-        cancellable.cancel()
+        // Assert
+        XCTAssertTrue(sections.isEmpty)
         
     }
     
@@ -48,12 +41,13 @@ final class MenuListViewModelTests: XCTestCase {
             .$sections
             .dropFirst()
             .sink { value in
-                // Ensure the grouping closure is called with
-                // the received menu
+                guard case .success(let sections) = value else {
+                    return XCTFail("Expected a successful Result, got: \(value)")
+                }
                 XCTAssertEqual(receivedMenu, expectedMenu)
                 // Ensure the published value is the result of
                 // the grouping closure
-                XCTAssertEqual(value, expectedSections)
+                XCTAssertEqual(sections, expectedSections)
                 expectation.fulfill()
             }
             .store(in: &cancellables)
