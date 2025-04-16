@@ -11,10 +11,12 @@ import SwiftUI
 struct AlbertosApp: App {
     var body: some Scene {
         WindowGroup {
-            MenuList(viewModel: .init(
-                menu: menu,
-                menuGrouping: groupMenuByCategory
-            ))
+            NavigationStack {
+                MenuList(viewModel: .init(
+                    menuFetching: MenuFetchingPlaceholder(),
+                    menuGrouping: groupMenuByCategory
+                ))
+            }
         }
     }
 }

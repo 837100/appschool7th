@@ -25,17 +25,20 @@ struct MenuList: View {
 }
 
 extension MenuList {
-    struct ViewModel {
-        let sections: [MenuSection]
+    class ViewModel: ObservableObject {
+        @Published private(set) var sections: [MenuSection]
         
-        init(menu: [MenuItem], menuGrouping: @escaping ([MenuItem]) -> [MenuSection]) {
-            self.sections = menuGrouping(menu)
-        }
+        init(
+            menuFetching: MenuFetching,
+            menuGrouping: @escaping ([MenuItem]) -> [MenuSection]) {
+                self.sections = menuGrouping([])
+            }
     }
 }
 
 #Preview {
     NavigationStack {
-        MenuList(viewModel: .init(menu: menu, menuGrouping: groupMenuByCategory))
+        MenuList(viewModel: .init(menuFetching: MenuFetchingPlaceholder()
+                                  , menuGrouping: groupMenuByCategory))
     }
 }
