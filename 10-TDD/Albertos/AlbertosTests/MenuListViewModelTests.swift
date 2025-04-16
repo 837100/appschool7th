@@ -9,7 +9,17 @@ import XCTest
 import Combine
 
 final class MenuListViewModelTests: XCTestCase {
-    var cancellables = Set<AnyCancellable>()
+    var cancellables: Set<AnyCancellable>!
+    
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+        cancellables = []
+    }
+    
+    override func tearDownWithError() throws {
+        cancellables = []
+        try super.tearDownWithError()
+    }
     
     // 메뉴 리스트 첫 Publisher는 빈 리스트를 발행한다.
     func testWhenFetchingStartsPublishesEmptyMenu() throws {
