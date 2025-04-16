@@ -14,19 +14,11 @@
 			remoteGlobalIDString = D24F41382DADFB520086BBC6;
 			remoteInfo = Albertos;
 		};
-		D24F41512DADFB530086BBC6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D24F41312DADFB520086BBC6 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D24F41382DADFB520086BBC6;
-			remoteInfo = Albertos;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		D24F41392DADFB520086BBC6 /* Albertos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Albertos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D24F41462DADFB530086BBC6 /* AlbertosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbertosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D24F41502DADFB530086BBC6 /* AlbertosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbertosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -57,13 +49,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D24F414D2DADFB530086BBC6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -81,7 +66,6 @@
 			children = (
 				D24F41392DADFB520086BBC6 /* Albertos.app */,
 				D24F41462DADFB530086BBC6 /* AlbertosTests.xctest */,
-				D24F41502DADFB530086BBC6 /* AlbertosUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,26 +118,6 @@
 			productReference = D24F41462DADFB530086BBC6 /* AlbertosTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D24F414F2DADFB530086BBC6 /* AlbertosUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D24F41602DADFB530086BBC6 /* Build configuration list for PBXNativeTarget "AlbertosUITests" */;
-			buildPhases = (
-				D24F414C2DADFB530086BBC6 /* Sources */,
-				D24F414D2DADFB530086BBC6 /* Frameworks */,
-				D24F414E2DADFB530086BBC6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D24F41522DADFB530086BBC6 /* PBXTargetDependency */,
-			);
-			name = AlbertosUITests;
-			packageProductDependencies = (
-			);
-			productName = AlbertosUITests;
-			productReference = D24F41502DADFB530086BBC6 /* AlbertosUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -168,10 +132,6 @@
 						CreatedOnToolsVersion = 16.3;
 					};
 					D24F41452DADFB530086BBC6 = {
-						CreatedOnToolsVersion = 16.3;
-						TestTargetID = D24F41382DADFB520086BBC6;
-					};
-					D24F414F2DADFB530086BBC6 = {
 						CreatedOnToolsVersion = 16.3;
 						TestTargetID = D24F41382DADFB520086BBC6;
 					};
@@ -193,7 +153,6 @@
 			targets = (
 				D24F41382DADFB520086BBC6 /* Albertos */,
 				D24F41452DADFB530086BBC6 /* AlbertosTests */,
-				D24F414F2DADFB530086BBC6 /* AlbertosUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -207,13 +166,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D24F41442DADFB530086BBC6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D24F414E2DADFB530086BBC6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -237,13 +189,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D24F414C2DADFB530086BBC6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -251,11 +196,6 @@
 			isa = PBXTargetDependency;
 			target = D24F41382DADFB520086BBC6 /* Albertos */;
 			targetProxy = D24F41472DADFB530086BBC6 /* PBXContainerItemProxy */;
-		};
-		D24F41522DADFB530086BBC6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D24F41382DADFB520086BBC6 /* Albertos */;
-			targetProxy = D24F41512DADFB530086BBC6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -475,40 +415,6 @@
 			};
 			name = Release;
 		};
-		D24F41612DADFB530086BBC6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QFY346K4GK;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = sg.837100.AlbertosUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Albertos;
-			};
-			name = Debug;
-		};
-		D24F41622DADFB530086BBC6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QFY346K4GK;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = sg.837100.AlbertosUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Albertos;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -535,15 +441,6 @@
 			buildConfigurations = (
 				D24F415E2DADFB530086BBC6 /* Debug */,
 				D24F415F2DADFB530086BBC6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D24F41602DADFB530086BBC6 /* Build configuration list for PBXNativeTarget "AlbertosUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D24F41612DADFB530086BBC6 /* Debug */,
-				D24F41622DADFB530086BBC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
