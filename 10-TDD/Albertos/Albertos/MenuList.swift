@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 struct MenuList: View {
+    @EnvironmentObject var orderController: OrderController
     @StateObject var  viewModel: ViewModel
     
     var body: some View {
@@ -18,7 +19,9 @@ struct MenuList: View {
                 ForEach(sections) { section in
                     Section(header: Text(section.category)) {
                         ForEach(section.items) { item in
-                            MenuRow(viewModel: .init(item: item))
+                            NavigationLink(destination: destination(from: item)) {
+                                MenuRow(viewModel: .init(item: item))
+                            }
                         }
                     }
                 }
@@ -38,6 +41,10 @@ struct MenuList: View {
             viewModel.retry()
         }
         .navigationTitle("Alberto's 🇮🇹")
+    }
+    
+    func destination(from item: MenuItem) -> some View {
+        MenuItemDetail(viewModel: .init(item: item, orderController: orderController))
     }
 }
 
@@ -64,6 +71,7 @@ extension MenuList {
             // [중요] 전달 받은 [MenuItem] 시퀀스를 menuGrouping 함수에 전달하도록 수정
                 .map(menuGrouping)
             // [중요] Result<[MenuSection], Error> 타입으로 변환
+                .receive(on: DispatchQueue.main)
                 .sink(receiveCompletion: { [weak self] completion in
                     if case .failure(let error) = completion {
                         self?.sections = .failure(error)
