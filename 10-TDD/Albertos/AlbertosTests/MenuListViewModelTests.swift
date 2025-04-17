@@ -64,6 +64,88 @@ final class MenuListViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: 1)
     }
     
-    func testWhenFetchingFailsPublishesAnError(){}
+    // 메뉴 리스트 조회가 실패하면, 에러를 발생한다.
+    func testWhenFetchingFailsPublishesAnError(){
+        let expectedError = NSError(domain: "TestError", code: 0, userInfo: nil)
+        let viewModel = MenuList.ViewModel(menuFetching: MenuFetchingStub(returning: .failure(expectedError)))
+        
+        // ACT
+        let expectation = XCTestExpectation(description: "Pulishes an error")
+        
+        viewModel
+            .$sections
+            .dropFirst()
+            .sink { value in
+                guard case .failure(let error) = value else {
+                    return XCTFail("Expected a failing Result, got: \(value)")
+                }
+                XCTAssertEqual(error as NSError, expectedError)
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        // Assert
+        wait(for: [expectation], timeout: 1)
+    }
     
+    // 메뉴 조회 재시도 테스트
+    func testRetryFetchesMenuAgain() {
+        // Arrange
+        var fetchCount = 0
+        let expectedMenu = [MenuItem.fixture()]
+        
+        let menuFetchingSpy = MenuFetchingSpy(
+            fetchingClosure: {
+                fetchCount += 1
+                if fetchCount == 1 {
+                    return Fail(error: NSError(domain: "TestError", code: 0, userInfo: nil))
+                        .eraseToAnyPublisher()
+                } else {
+                    return Just(expectedMenu)
+                        .setFailureType(to: Error.self)
+                        .eraseToAnyPublisher()
+                }
+            })
+        
+        let viewModel = MenuList.ViewModel(menuFetching: menuFetchingSpy)
+        
+        // Act
+        let firstFailExpection = XCTestExpectation(description: "First fetch fails")
+        let expectation = XCTestExpectation(description: "Retry fetchs menu again")
+        
+        var results = [Result<[MenuSection] , Error>]()
+        viewModel
+            .$sections
+            .sink { value in
+                results.append(value)
+                guard case .success(let sections) = value else {
+                    firstFailExpection.fulfill()
+                    return
+                }
+                XCTAssertEqual(sections.flatMap { $0.items}, expectedMenu)
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
+        
+        viewModel.retry()
+        
+        // Assert
+        wait(for: [firstFailExpection], timeout: 0.1)
+        wait(for: [expectation], timeout: 0.1)
+        XCTAssertEqual(fetchCount, 2)
+        XCTAssertTrue(results[0].isFailure)
+        XCTAssertTrue(results[1].isSuccess)
+    }
+}
+
+extension Result {
+    var isSuccess: Bool {
+        switch self {
+        case .success: return true
+        case .failure: return false
+        }
+    }
+    var isFailure: Bool {
+        return !isSuccess
+    }
 }
