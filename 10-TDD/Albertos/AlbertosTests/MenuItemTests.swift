@@ -14,13 +14,13 @@ final class MenuItemTests: XCTestCase {
         //        let json = #"{ "name": "a name", "category": "a category", "spicy" : true , "price" : 0.0 }"#
         let json = MenuItem.jsonFixture(name: "a name",
                                         category: "a category",
-                                        spicy: true,
+                                        spicy: false,
                                         price: 0.0)
         let data = try XCTUnwrap(json.data(using: .utf8))
         let item = try JSONDecoder().decode(MenuItem.self, from: data)
         XCTAssertEqual(item.name, "a name")
         XCTAssertEqual(item.category, "a category")
-        XCTAssertEqual(item.spicy, true)
+        XCTAssertEqual(item.spicy, false)
     }
     
     func testDecodeFromJsonData() throws {
