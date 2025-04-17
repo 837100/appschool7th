@@ -16,14 +16,56 @@ final class MenuItemDetailViewModelTests: XCTestCase {
         let item = MenuItem.fixture()
         let orderController = OrderController()
         let viewModel = MenuItemDetail.ViewModel(item: item, orderController: orderController)
-        let text = viewModel.orderButtonText
+//        let text = viewModel.orderButtonText
         
-        // ACT
-        orderController.addToOrder(item: item)
+        // Act
+//        XCTAssertEqual(viewModel.orderButtonText, "주문 삭제")
+        orderController.addToOrder(item)
         
         // Assert
-        XCTAssertEqual(text, "주문 삭제")
+        XCTAssertEqual(viewModel.orderButtonText, "주문 삭제")
     }
-    func testWhenItemNotInOrderButtonSaysAdd() {}
     
+    func testWhenItemNotInOrderButtonSaysAdd() {
+        //  Arrange
+        let item = MenuItem.fixture()
+        let orderController = OrderController()
+        let viewModel = MenuItemDetail.ViewModel(item: item, orderController: orderController)
+        
+        // Assert
+        XCTAssertEqual(viewModel.orderButtonText, "주문 추가")
+    }
+    
+    
+    // 메뉴가 장바구니에 담겨 있으면, 주문 버튼을 누르면 장바구니에서 삭제됩니다.
+    func testWhenItemIsInOrderButtonActionRemovesIt() {
+        // Arrange
+        let item = MenuItem.fixture()
+        let orderController = OrderController()
+        let viewModel = MenuItemDetail.ViewModel(item: item, orderController: orderController)
+        
+        // Act
+        orderController.addToOrder(item)
+        viewModel.addOrRemoveFromOrder()
+        
+        // Assert
+        XCTAssertFalse(orderController.order.items.contains {
+            $0 == item })
+    }
+    
+    // 메뉴가 장바구니에 담겨 있지 않으면, 주문 버튼을 누르면 장바구니에 추가됩니다.
+    func testWhenItemIsNotInOrderButtonActionAddsIt() {
+        // Arrange
+        let item = MenuItem.fixture()
+        let orderController = OrderController()
+        let viewModel = MenuItemDetail.ViewModel(item: item, orderController: orderController)
+        
+        // ACT
+        viewModel.addOrRemoveFromOrder()
+        
+        // Assert
+        XCTAssertTrue(orderController.order.items.contains{
+            $0 == item
+        })
+    }
 }
