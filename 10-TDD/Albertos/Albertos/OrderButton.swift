@@ -18,8 +18,12 @@ struct OrderButton: View {
     var body: some View {
         Button(action: {
             // TODO: 주문 상세 화면으로 이동하는 로직
+            viewModel.showOrderDetail.toggle()
         }) {
             Text(viewModel.buttonText)
+        }
+        .sheet(isPresented: $viewModel.showOrderDetail) {
+            OrderDetail(orderController: viewModel.orderController)
         }
     }
 }
@@ -27,7 +31,9 @@ struct OrderButton: View {
 extension OrderButton {
     class ViewModel: ObservableObject {
         @Published var buttonText: String = "주문하기"
-        private let orderController: OrderController
+        @Published var showOrderDetail: Bool = false
+        
+        let orderController: OrderController
         private var cancellable = Set<AnyCancellable>()
         
         init(orderController: OrderController) {
