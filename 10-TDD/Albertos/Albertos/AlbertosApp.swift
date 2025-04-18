@@ -15,7 +15,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     ) -> Bool {
         // Initialize analytics here
         debugPrint("🦛 HippoAnalytics: AppDelegate didFinishLaunchingWithOptions")
-        let analytics = HippoAnalytics.shared
+        let analytics = HippoAnalyticsClient.shared
         analytics.configure(apiKey: "your_api_key_here")
         
         return true

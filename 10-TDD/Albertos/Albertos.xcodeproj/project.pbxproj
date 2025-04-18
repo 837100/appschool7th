@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D283F8662DB1EB1500BD4A2A /* HippoAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D283F8602DB1EB1500BD4A2A /* HippoAnalytics.framework */; };
-		D283F8672DB1EB1500BD4A2A /* HippoAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D283F8602DB1EB1500BD4A2A /* HippoAnalytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D27C00FC2DB2130D00566468 /* HippoAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27C00F42DB2130D00566468 /* HippoAnalytics.framework */; };
+		D27C00FD2DB2130D00566468 /* HippoAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D27C00F42DB2130D00566468 /* HippoAnalytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D283F8772DB1F25700BD4A2A /* HippoPayments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D283F8712DB1F25700BD4A2A /* HippoPayments.framework */; };
 		D283F8782DB1F25700BD4A2A /* HippoPayments.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D283F8712DB1F25700BD4A2A /* HippoPayments.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -21,11 +21,11 @@
 			remoteGlobalIDString = D24F41382DADFB520086BBC6;
 			remoteInfo = Albertos;
 		};
-		D283F8642DB1EB1500BD4A2A /* PBXContainerItemProxy */ = {
+		D27C00FA2DB2130D00566468 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D24F41312DADFB520086BBC6 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D283F85F2DB1EB1500BD4A2A;
+			remoteGlobalIDString = D27C00F32DB2130D00566468;
 			remoteInfo = HippoAnalytics;
 		};
 		D283F8752DB1F25700BD4A2A /* PBXContainerItemProxy */ = {
@@ -44,8 +44,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D27C00FD2DB2130D00566468 /* HippoAnalytics.framework in Embed Frameworks */,
 				D283F8782DB1F25700BD4A2A /* HippoPayments.framework in Embed Frameworks */,
-				D283F8672DB1EB1500BD4A2A /* HippoAnalytics.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,7 +55,7 @@
 /* Begin PBXFileReference section */
 		D24F41392DADFB520086BBC6 /* Albertos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Albertos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D24F41462DADFB530086BBC6 /* AlbertosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbertosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D283F8602DB1EB1500BD4A2A /* HippoAnalytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HippoAnalytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D27C00F42DB2130D00566468 /* HippoAnalytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HippoAnalytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D283F8712DB1F25700BD4A2A /* HippoPayments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HippoPayments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -70,7 +70,7 @@
 			path = AlbertosTests;
 			sourceTree = "<group>";
 		};
-		D283F8612DB1EB1500BD4A2A /* HippoAnalytics */ = {
+		D27C00F52DB2130D00566468 /* HippoAnalytics */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = HippoAnalytics;
 			sourceTree = "<group>";
@@ -87,8 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D27C00FC2DB2130D00566468 /* HippoAnalytics.framework in Frameworks */,
 				D283F8772DB1F25700BD4A2A /* HippoPayments.framework in Frameworks */,
-				D283F8662DB1EB1500BD4A2A /* HippoAnalytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +99,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D283F85D2DB1EB1500BD4A2A /* Frameworks */ = {
+		D27C00F12DB2130D00566468 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -121,8 +121,8 @@
 			children = (
 				D24F413B2DADFB520086BBC6 /* Albertos */,
 				D24F41492DADFB530086BBC6 /* AlbertosTests */,
-				D283F8612DB1EB1500BD4A2A /* HippoAnalytics */,
 				D283F8722DB1F25700BD4A2A /* HippoPayments */,
+				D27C00F52DB2130D00566468 /* HippoAnalytics */,
 				D24F413A2DADFB520086BBC6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -132,8 +132,8 @@
 			children = (
 				D24F41392DADFB520086BBC6 /* Albertos.app */,
 				D24F41462DADFB530086BBC6 /* AlbertosTests.xctest */,
-				D283F8602DB1EB1500BD4A2A /* HippoAnalytics.framework */,
 				D283F8712DB1F25700BD4A2A /* HippoPayments.framework */,
+				D27C00F42DB2130D00566468 /* HippoAnalytics.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,7 +141,7 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		D283F85B2DB1EB1500BD4A2A /* Headers */ = {
+		D27C00EF2DB2130D00566468 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -170,8 +170,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				D283F8652DB1EB1500BD4A2A /* PBXTargetDependency */,
 				D283F8762DB1F25700BD4A2A /* PBXTargetDependency */,
+				D27C00FB2DB2130D00566468 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				D24F413B2DADFB520086BBC6 /* Albertos */,
@@ -206,27 +206,27 @@
 			productReference = D24F41462DADFB530086BBC6 /* AlbertosTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D283F85F2DB1EB1500BD4A2A /* HippoAnalytics */ = {
+		D27C00F32DB2130D00566468 /* HippoAnalytics */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D283F8682DB1EB1500BD4A2A /* Build configuration list for PBXNativeTarget "HippoAnalytics" */;
+			buildConfigurationList = D27C00FE2DB2130D00566468 /* Build configuration list for PBXNativeTarget "HippoAnalytics" */;
 			buildPhases = (
-				D283F85B2DB1EB1500BD4A2A /* Headers */,
-				D283F85C2DB1EB1500BD4A2A /* Sources */,
-				D283F85D2DB1EB1500BD4A2A /* Frameworks */,
-				D283F85E2DB1EB1500BD4A2A /* Resources */,
+				D27C00EF2DB2130D00566468 /* Headers */,
+				D27C00F02DB2130D00566468 /* Sources */,
+				D27C00F12DB2130D00566468 /* Frameworks */,
+				D27C00F22DB2130D00566468 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				D283F8612DB1EB1500BD4A2A /* HippoAnalytics */,
+				D27C00F52DB2130D00566468 /* HippoAnalytics */,
 			);
 			name = HippoAnalytics;
 			packageProductDependencies = (
 			);
 			productName = HippoAnalytics;
-			productReference = D283F8602DB1EB1500BD4A2A /* HippoAnalytics.framework */;
+			productReference = D27C00F42DB2130D00566468 /* HippoAnalytics.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D283F8702DB1F25700BD4A2A /* HippoPayments */ = {
@@ -269,7 +269,7 @@
 						CreatedOnToolsVersion = 16.3;
 						TestTargetID = D24F41382DADFB520086BBC6;
 					};
-					D283F85F2DB1EB1500BD4A2A = {
+					D27C00F32DB2130D00566468 = {
 						CreatedOnToolsVersion = 16.3;
 					};
 					D283F8702DB1F25700BD4A2A = {
@@ -293,8 +293,8 @@
 			targets = (
 				D24F41382DADFB520086BBC6 /* Albertos */,
 				D24F41452DADFB530086BBC6 /* AlbertosTests */,
-				D283F85F2DB1EB1500BD4A2A /* HippoAnalytics */,
 				D283F8702DB1F25700BD4A2A /* HippoPayments */,
+				D27C00F32DB2130D00566468 /* HippoAnalytics */,
 			);
 		};
 /* End PBXProject section */
@@ -314,7 +314,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D283F85E2DB1EB1500BD4A2A /* Resources */ = {
+		D27C00F22DB2130D00566468 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -345,7 +345,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D283F85C2DB1EB1500BD4A2A /* Sources */ = {
+		D27C00F02DB2130D00566468 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -367,10 +367,10 @@
 			target = D24F41382DADFB520086BBC6 /* Albertos */;
 			targetProxy = D24F41472DADFB530086BBC6 /* PBXContainerItemProxy */;
 		};
-		D283F8652DB1EB1500BD4A2A /* PBXTargetDependency */ = {
+		D27C00FB2DB2130D00566468 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D283F85F2DB1EB1500BD4A2A /* HippoAnalytics */;
-			targetProxy = D283F8642DB1EB1500BD4A2A /* PBXContainerItemProxy */;
+			target = D27C00F32DB2130D00566468 /* HippoAnalytics */;
+			targetProxy = D27C00FA2DB2130D00566468 /* PBXContainerItemProxy */;
 		};
 		D283F8762DB1F25700BD4A2A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -595,7 +595,7 @@
 			};
 			name = Release;
 		};
-		D283F8692DB1EB1500BD4A2A /* Debug */ = {
+		D27C00FF2DB2130D00566468 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -630,7 +630,7 @@
 			};
 			name = Debug;
 		};
-		D283F86A2DB1EB1500BD4A2A /* Release */ = {
+		D27C01002DB2130D00566468 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
@@ -765,11 +765,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D283F8682DB1EB1500BD4A2A /* Build configuration list for PBXNativeTarget "HippoAnalytics" */ = {
+		D27C00FE2DB2130D00566468 /* Build configuration list for PBXNativeTarget "HippoAnalytics" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D283F8692DB1EB1500BD4A2A /* Debug */,
-				D283F86A2DB1EB1500BD4A2A /* Release */,
+				D27C00FF2DB2130D00566468 /* Debug */,
+				D27C01002DB2130D00566468 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
