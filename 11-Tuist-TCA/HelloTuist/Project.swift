@@ -6,7 +6,7 @@ let appTarget = Target.target(
     name: "HelloTuist",
     destinations: .iOS,
     product: .app,
-    bundleId: "bundleId",
+    bundleId: bundleId,
     infoPlist: .extendingDefault(
         with: [
             "UILaunchScreen": [
@@ -34,6 +34,16 @@ let testTarget = Target.target(
 )
 
 // MARK: Modules
+let coreModule = Target.target(
+    name: "Core",
+    destinations: .iOS,
+    product: .framework,
+    bundleId: "\(bundleId).Core",
+    infoPlist: .default,
+    sources: ["Modules/Core/Sources/**"],
+    dependencies: []
+)
+
 let productFeatureModule = Target.target(
     name: "ProductFeature",
     destinations: .iOS,
@@ -41,7 +51,11 @@ let productFeatureModule = Target.target(
     bundleId: "\(bundleId).ProductFeature",
     infoPlist: .default,
     sources: ["Modules/ProductFeature/Sources/**"],
-    dependencies: [ .target(name: "Network")])
+    dependencies: [
+        .target(name: "Core"),
+        .target(name: "Network")
+    ]
+)
 
 let networkModule = Target.target(
     name: "Network",
@@ -50,7 +64,11 @@ let networkModule = Target.target(
     bundleId: "\(bundleId).Network",
     infoPlist: .default,
     sources: ["Modules/Network/Sources/**"],
-    dependencies: [.external(name: "Alamofire"),] )
+    dependencies: [
+        .target(name: "Core"),
+        .external(name: "Alamofire"),
+    ]
+)
 
 let networkTests = Target.target(
     name: "NetworkTests",
@@ -59,13 +77,18 @@ let networkTests = Target.target(
     bundleId: "\(bundleId).NetworkTests",
     infoPlist: .default,
     sources: ["Modules/Network/Tests/**"],
-    dependencies: [.target(name: "Network"),] )
+    dependencies: [
+        .target(name: "Core"),
+        .target(name: "Network"),
+    ]
+)
 
 let project = Project(
     name: "HelloTuist",
     targets: [
         appTarget,
         testTarget,
+        coreModule,
         productFeatureModule,
         networkModule,
         networkTests

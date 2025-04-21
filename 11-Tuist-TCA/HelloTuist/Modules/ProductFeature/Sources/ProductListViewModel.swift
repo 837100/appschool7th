@@ -1,6 +1,7 @@
 import Foundation
 import Combine // @Published 사용 위함
 import Network
+import Core
 
 public class ProductListViewModel: ObservableObject {
     @Published public var products: [Product] = [] // SwiftUI View가 구독할 상품 배열

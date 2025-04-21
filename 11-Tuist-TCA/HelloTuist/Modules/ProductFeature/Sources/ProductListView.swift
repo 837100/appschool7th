@@ -1,5 +1,6 @@
 import SwiftUI
 import Network // Product 모델 사용 위함
+import Core
 
 public struct ProductListView: View {
     // StateObject로 ViewModel 선언 (View의 생명주기와 함께 유지)
