@@ -2,7 +2,7 @@ import SwiftUI
 import Network // Product 모델 사용 위함
 
 public struct ProductListView: View {
-    // ViewModel 인스턴스 (StateObject로 View 생명주기와 연결)
+    // StateObject로 ViewModel 선언 (View의 생명주기와 함께 유지)
     @StateObject private var viewModel: ProductListViewModel
     
     public init(viewModel: ProductListViewModel = ProductListViewModel()) {
@@ -13,65 +13,160 @@ public struct ProductListView: View {
         NavigationView {
             Group {
                 if viewModel.isLoading {
-                    ProgressView("상품 목록 로딩중...") // 로딩 인디케이터
+                    loadingView
                 } else if let errorMessage = viewModel.errorMessage {
-                    Text("오류 발생: \(errorMessage)") // 오류 메시지 표시
-                        .foregroundStyle(.red)
-                        .padding()
+                    errorView(message: errorMessage)
+                } else if viewModel.products.isEmpty {
+                    emptyStateView
                 } else {
-                    // 상품 목록 표시 List
-                    List(viewModel.products) { product in
-                        ProductRow(product: product) // 각 상품명
-                    }
+                    productListView
                 }
             }
-            .navigationTitle("상품 목록")
-            .task { // view가 나타날 때 비동기 작업 수행
-                if viewModel.products.isEmpty {
-                    await viewModel.loadProducts()
-                }
-            }
-            .refreshable {
+        }
+        .navigationTitle("상품 목록")
+        task {
+            if viewModel.products.isEmpty && viewModel.errorMessage == nil && !viewModel.isLoading {
                 await viewModel.loadProducts()
             }
         }
+        .refreshable {
+            // 새로고침 시 강제로 다시 로드
+            await viewModel.loadProducts()
+        }
+    }
+    
+    
+    // MARK: - 하위 뷰 컴포넌트들
+    
+    private var loadingView: some View {
+        VStack {
+            ProgressView()
+                .scaleEffect(1.5)
+                .padding()
+            Text("상품 목록 로딩중...")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    
+    private func errorView(message: String) ->  some View {
+        VStack(spacing: 16) {
+            Image(systemName: "exclamationmark.triangle")
+                .font(.largeTitle)
+                .foregroundStyle(.red)
+            
+            Text("오류 발생")
+                .font(.headline)
+            
+            Text(message)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
+            
+            Button("다시 시도") {
+                Task {
+                    await viewModel.loadProducts()
+                }
+            }
+            .buttonStyle(.bordered)
+            .padding(.top)
+        }
+        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    private var emptyStateView: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "cart")
+                .font(.system(size: 60))
+                .foregroundStyle(.secondary)
+            
+            Text("상품이 없습니다.")
+                .font(.headline)
+            
+            Text("상품 목록을 불러올 수 없습니다. \n다시 시도해주세요.")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
+            
+            Button("새로고침") {
+                Task {
+                    await viewModel.loadProducts()
+                }
+            }
+            .buttonStyle(.bordered)
+            .padding(.top)
+        }
+        .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    
+    private var productListView: some View {
+        List {
+            ForEach(viewModel.products) { product in
+                ProductRow(product: product)
+            }
+        }
+        .listStyle(.plain)
     }
 }
-
 
 // 상품 목록의 각 행을 위한 View
 struct ProductRow: View {
     let product: Product
     
     var body: some View {
-        HStack {
-            // AsyncImage: URL로부터 비동기 이미지 로딩 (iOS 15 이상)
-            AsyncImage(url: URL(string: product.image)) { phase in
-                switch phase {
-                case .empty:
-                    ProgressView() // 로딩 중
-                case .success(let image):
-                    image.resizable() // 이미지 로드 성공
-                        .aspectRatio(contentMode: .fit)
-                case .failure:
-                    Image(systemName: "photo") // 로드 실패 시 기본 이미지
-                        .foregroundStyle(.gray)
-                @unknown default:
-                    EmptyView()
-                }
-            }
-            .frame(width: 50, height: 50) // 이미지 크기 고정
-            .clipShape(RoundedRectangle(cornerRadius: 8))
-            
-            VStack(alignment: .leading) {
-                Text(product.title)
-                    .font(.headline)
-                    .lineLimit(2)
-                Text("$\(product.price, specifier: "%.2f")")
-                    .font(.subheadline)
+        HStack(spacing: 12) {
+            productImage
+            productInfo
+            Spacer()
+        }
+        .padding(.vertical, 8)
+    }
+    
+    private var productImage: some View {
+        AsyncImage(url: URL(string: product.image)) { phase in
+            switch phase {
+            case .empty:
+                ProgressView()
+                    .frame(width: 60, height: 60)
+            case .success(let image):
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 60, height: 60)
+            case .failure:
+                Image(systemName: "photo")
+                    .font(.system(size: 30))
                     .foregroundStyle(.gray)
+                    .frame(width: 60, height: 60)
+            @unknown default:
+                EmptyView()
             }
-            Spacer() // 오른쪽으로 밀기
+        }
+        .frame(width: 60, height: 60)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+        )
+    }
+    
+    
+    private var productInfo: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(product.title)
+                .font(.system(size: 16, weight: .medium))
+                .lineLimit(2)
+                .multilineTextAlignment(.leading)
+            
+            Text("$\(String(format: "%.2f", product.price))")
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundStyle(.blue)
         }
     }
 }
