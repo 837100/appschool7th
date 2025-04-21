@@ -50,7 +50,7 @@ let networkModule = Target.target(
     bundleId: "\(bundleId).Network",
     infoPlist: .default,
     sources: ["Modules/Network/Sources/**"],
-    dependencies: [.package(product: "Alamofire"),] )
+    dependencies: [.external(name: "Alamofire"),] )
 
 let networkTests = Target.target(
     name: "NetworkTests",
