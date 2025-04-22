@@ -14,11 +14,12 @@ public enum NetworkError: Error {
     case invalidURL
     case requestFailed(Error)
     case decodingFailed(Error)
+    case serverError(statusCode: Int)
     case unknown
 }
 
 // API 통신 서비스 (public으로 선언)
-public actor APIService {
+public class APIService {
     public static let shared = APIService() // 싱글톤 인스턴스
     private let baseURL = "https://fakestoreapi.com"
     
@@ -28,7 +29,7 @@ public actor APIService {
         return Session(configuration: configuration)
     }()
     
-    private init() {} // 외부 생성 방지
+     init() {} // 외부 생성 방지
     
     // 상품 목록 가져오기 (async/await) 사용
     @MainActor
