@@ -17,6 +17,7 @@ class SingleViewController: UIViewController {
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
+        // Single 예제
         super.viewDidLoad()
         fetchDataFromServer()
             .subscribe(onSuccess: { data in
@@ -28,6 +29,16 @@ class SingleViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
+        // Completable 예제 설명
+        saveDataToServer()
+            .subscribe(onCompleted: {
+                print("Data saved successfully!")
+            }, onError: { error in
+                print("Error occurred while saving data: \(error)")
+            }, onDisposed: {
+                print("Disposed!")
+            })
+            .disposed(by: disposeBag)
         
     }
     
@@ -41,6 +52,41 @@ class SingleViewController: UIViewController {
                     single(.failure(MyError.operationFailed))
                 }
                 
+            }
+            return Disposables.create()
+        }
+    }
+    
+    func saveDataToServer() -> Completable {
+        return Completable.create { completable in
+            print("Completable: 서버에 데이터 저장 중...")
+            DispatchQueue.global().asyncAfter(deadline: .now() + 1){
+                let success = Bool.random()
+                if success {
+                    completable(.completed)
+                } else {
+                    completable(.error(MyError.operationFailed))
+                }
+            }
+            return Disposables.create()
+        }
+    }
+    
+    // --- Maybe 예제 ---
+    func findDataInCache() -> Maybe<String> {
+        return Maybe<String>.create { maybe in
+            print("Maybe 캐시에서 데이터 찾는 중...")
+            DispatchQueue.global().asyncAfter(deadline: .now() + 0.5) {
+                let cacheHit = Bool.random()
+                let hasData = Bool.random()
+                
+                if cacheHit && hasData {
+                    maybe(.success("캐시 데이터 찾음"))
+                } else if cacheHit && !hasData {
+                    maybe(.completed)
+                } else {
+                    maybe(.error(MyError.noDataFound))
+                }
             }
             return Disposables.create()
         }

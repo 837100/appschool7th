@@ -36,6 +36,7 @@ class ParentViewController: UIViewController {
     
     func setupUI() {
         view.addSubview(goToChildButton)
+        view.addSubview(goSingleButton)
         
         goToChildButton.translatesAutoresizingMaskIntoConstraints = false
         goSingleButton.translatesAutoresizingMaskIntoConstraints = false
