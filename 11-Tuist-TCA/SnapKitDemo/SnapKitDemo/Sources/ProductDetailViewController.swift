@@ -59,6 +59,7 @@ class ProductDetailViewController: UIViewController {
         title = "Product Detail"
         
         setupUI()
+        setupConstraints()
         
     }
     
@@ -91,11 +92,6 @@ class ProductDetailViewController: UIViewController {
             make.leading.trailing.equalToSuperview().inset(20)
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
             make.height.equalTo(50)
-        }
-        
-        contentView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-            make.width.equalTo(scrollView)
         }
         
         contentView.snp.makeConstraints { make in
