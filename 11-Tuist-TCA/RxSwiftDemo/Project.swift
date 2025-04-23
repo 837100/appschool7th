@@ -19,7 +19,8 @@ let project = Project(
             sources: ["RxSwiftDemo/Sources/**"],
             resources: ["RxSwiftDemo/Resources/**"],
             dependencies: [
-                .external(name: "RxSwift")
+                .external(name: "RxSwift"),
+                .external(name: "RxCocoa")
             ]
         ),
         .target(
