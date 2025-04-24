@@ -29,6 +29,23 @@ public struct ContentView: View {
                 .background(Color.green.opacity(0.1))
                 .cornerRadius(10)
             }
+            
+            Button("Fact") {
+                store.send(.factButtonTapped)
+            }
+            .font(.largeTitle)
+            .padding()
+            .background(Color.black.opacity(0.1))
+            .cornerRadius(10)
+            
+            if true /*store.isLoding*/ {
+                ProgressView()
+            } else {
+//                Text(fact)
+//                    .font(.largeTitle)
+//                    .multilineTextAlignment(.center)
+//                    .padding()
+            }
         }
     }
 }
