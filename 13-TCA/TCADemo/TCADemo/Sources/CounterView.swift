@@ -2,7 +2,7 @@
 import SwiftUI
 import ComposableArchitecture
 
-public struct ContentView: View {
+public struct CounterView: View {
     let store: StoreOf<CounterFeature>
     
     public var body: some View {
@@ -30,6 +30,14 @@ public struct ContentView: View {
                 .cornerRadius(10)
             }
             
+            Button(store.isTimerRunning ? "Stop" : "Start") {
+                store.send(.toggleTimerButtonTapped)
+            }
+            .font(.largeTitle)
+            .padding()
+            .background(Color.black.opacity(0.1))
+            .cornerRadius(10)
+            
             Button("Fact") {
                 store.send(.factButtonTapped)
             }
@@ -51,7 +59,7 @@ public struct ContentView: View {
 }
 
 #Preview {
-    ContentView(
+    CounterView(
         store: Store(initialState: CounterFeature.State()) {
             CounterFeature()
         }
