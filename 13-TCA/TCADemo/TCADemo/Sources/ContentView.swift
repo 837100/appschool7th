@@ -18,7 +18,7 @@ public struct ContentView: View {
                 }
                 .font(.largeTitle)
                 .padding()
-                .background(Color.blue.opacity(0.1))
+                .background(Color.black.opacity(0.1))
                 .cornerRadius(10)
                 
                 Button("+") {
@@ -26,7 +26,7 @@ public struct ContentView: View {
                 }
                 .font(.largeTitle)
                 .padding()
-                .background(Color.green.opacity(0.1))
+                .background(Color.black.opacity(0.1))
                 .cornerRadius(10)
             }
             
@@ -38,13 +38,13 @@ public struct ContentView: View {
             .background(Color.black.opacity(0.1))
             .cornerRadius(10)
             
-            if true /*store.isLoding*/ {
+            if store.isLoading {
                 ProgressView()
-            } else {
-//                Text(fact)
-//                    .font(.largeTitle)
-//                    .multilineTextAlignment(.center)
-//                    .padding()
+            } else if let fact = store.fact {
+                Text(fact)
+                    .font(.largeTitle)
+                    .multilineTextAlignment(.center)
+                    .padding()
             }
         }
     }
