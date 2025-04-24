@@ -1,3 +1,4 @@
+import Foundation
 import Fluent
 import struct Foundation.UUID
 
@@ -9,13 +10,18 @@ final class Todo: Model, @unchecked Sendable {
     
     @ID(key: .id)
     var id: UUID?
-
+    
     @Field(key: "title")
     var title: String
-
+    
+    @Field(key: "is_completed")
+    var isCompleted: Bool
+    @Timestamp(key: "created_at", on: .create)
+    var createdAt: Date?
+    
     init() { }
-
-    init(id: UUID? = nil, title: String) {
+    
+    init(id: UUID? = nil, title: String, isCompleted: Bool = false, createdAt: Date? = Date()) {
         self.id = id
         self.title = title
     }

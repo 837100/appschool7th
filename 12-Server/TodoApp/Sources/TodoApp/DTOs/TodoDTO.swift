@@ -9,9 +9,16 @@ struct TodoDTO: Content {
         let model = Todo()
         
         model.id = self.id
+    
         if let title = self.title {
             model.title = title
         }
+        
+        if let isCompleted = model.isCompleted  {
+            model.isCompleted = isCompleted
+        }
+        
+            
         return model
     }
 }
